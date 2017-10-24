@@ -18,7 +18,7 @@ $this->load->library('grocery_CRUD');
 
 public function index()
 {
-echo "<h1>Welcome to the world of Codeigniter</h1>";//Just an example to ensure that we get into the function
+echo "<h1>Welcome to the world of Street Fighter III</h1>";//Just an example to ensure that we get into the function
 die();
 }
 
@@ -33,20 +33,21 @@ $crud->set_language("spanish");
 
 $crud->set_subject('Postulaciones');
 $crud->set_table('postulaciones');
-$crud->columns('nombre','rut','region','telefono','email','link');
+$crud->columns('nombre','apellidos','rut','region','comuna','direccion','telefono','email','educacion_superior','titulos','cursos','comentarios','fecha');
 $crud->add_action('Curriculum', '', '','ui-icon-image',array($this,'just_a_test'));
-$crud->callback_after_delete(array($this,'user_after_delete'));
 
+$crud->unset_read();
 $crud->unset_add();
+$crud->unset_edit();
+$jsfile = 'assets/grocery_crud/js/refresh.js';
+        $crud->set_js($jsfile);
 $output = $crud->render();
 $this->load->helper('file');
 
 $this->_example_output($output);
 }
 
-function user_after_delete() {
-  redirect("/main/subidas","refresh");
-}
+
 
 function _example_output($output = null)
 {
@@ -59,6 +60,7 @@ function just_a_test($primary_key , $row)
   return "../../gitHub/formularioREAL/uploads/".$row->link;
 
 }
+
 
 }
 
