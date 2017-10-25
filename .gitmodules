@@ -1,0 +1,9 @@
+[submodule "codeigniter"]
+	path = codeigniter
+	url = https://github.com/diegovc2/codeigniter
+ 
+
+[submodule "lele"]
+	path = lele
+	url = https://github.com/diegovc2/lele
+ ignore = dirty
