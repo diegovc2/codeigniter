@@ -81,9 +81,13 @@
       <form method="post" action="" id="contact_form" onsubmit="return processForm()" enctype="multipart/form-data">
         <input type="hidden" name="do" value="contact" />
 
+        <p>
+      <input type="checkbox" id="practica" name="practica"/>
+      <label for="practica">Solicitud de Práctica</label>
+    </p>
+
 
         <div class="input-field col s12">
-
     <input type="text" name="name"  required>
     <label>Nombre</label>
 
@@ -378,16 +382,25 @@
 </div>
 
 
-<h2>INFORMACION ADICIONAL</h2>
+<h2>Areas de Interés</h2>
 
 <div class="row">
 
     <div class="input-field col s6 ">
       <i class="material-icons prefix">mode_edit</i>
-    <textarea data-length="400"  class="tooltipped materialize-textarea " name="message" data-tooltip="Describa Aquí" maxlength="200"></textarea>
+    <textarea data-length="400"  class="tooltipped materialize-textarea " name="areainteres" data-tooltip="Describa Aquí" maxlength="400"></textarea>
     </div>
 </div>
 
+<h2>Areas de Especialidad</h2>
+
+<div class="row">
+
+    <div class="input-field col s6 ">
+      <i class="material-icons prefix">mode_edit</i>
+    <textarea data-length="400"  class="tooltipped materialize-textarea " name="areaesp" data-tooltip="Describa Aquí" maxlength="400"></textarea>
+    </div>
+</div>
 
 <label>Adjunte su CV (sólo archivos .pdf)</label>
 <br>
@@ -453,7 +466,6 @@
 
 
         var fd = new FormData(document.getElementById("contact_form"));
-        fd.append("CustomField", "This is some extra data");
         jQuery.ajax({
           url: "form1.php",
           type: "POST",

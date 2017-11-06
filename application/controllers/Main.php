@@ -33,14 +33,19 @@ $crud->set_language("spanish");
 
 $crud->set_subject('Postulaciones');
 $crud->set_table('postulaciones');
-$crud->columns('nombre','apellidos','rut','region','comuna','direccion','telefono','email','educacion_superior','titulos','cursos','comentarios','fecha');
+$crud->columns('practica','nombre','apellidos','rut','region','comuna','direccion','telefono','telefono2','email','universidad','añoegreso','educacion_superior','titulos','cursos','areaesp','areainteres','fecha');
 $crud->add_action('Curriculum', '', '','ui-icon-image',array($this,'just_a_test'));
+$crud->display_as('añoegreso','Año de Egreso');
+$crud->display_as('areaesp','Área de Especialidad');
+$crud->display_as('areainteres','Área de Interés');
+
+$crud->display_as('fecha','Fecha de Postulación');
 
 $crud->unset_read();
 $crud->unset_add();
 $crud->unset_edit();
 $jsfile = 'assets/grocery_crud/js/refresh.js';
-        $crud->set_js($jsfile);
+$crud->set_js($jsfile);
 $output = $crud->render();
 $this->load->helper('file');
 

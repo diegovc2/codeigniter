@@ -57,6 +57,10 @@ function process_si_contact_form()
           $telefonocomp2=$codigo2.$telefono2;
           $añoegreso=$_POST['añoegreso'];
 
+        if(!(isset($_POST['practica'])))
+          $practica="";
+          else $practica=$_POST['practica'];
+
           $email=$_POST['email'];
           $media=$_POST['media'];
 
@@ -87,12 +91,13 @@ function process_si_contact_form()
 
           $titulos=$_POST['titulos'];
           $cursos=$_POST['cursos'];
-                $message=$_POST['message'];
+                $areainteres=$_POST['areainteres'];
+                $areaesp=$_POST['areaesp'];
                 $fecha=$date = date("d/m/Y G:i");
                 $from='From:TangledDemo';
                 $to='diegoveloso34@hotmail.com';
                 $subject='Hello';
-                $body="From: $name\n E-Mail: $email\n Message:\n $message";
+                $body="From: $name\n E-Mail: $email\n Message";
 
 
 
@@ -169,6 +174,7 @@ function process_si_contact_form()
 */
                       }
                     }
+                    else $numero[0]=0;
 
 
                     // Check if $uploadOk is set to 0 by an error
@@ -177,8 +183,47 @@ function process_si_contact_form()
                   } else {
 
 
-                                              $sql="REPLACE into postulaciones (nombre,apellidos,rut,region,comuna,direccion,telefono,telefono2,email,universidad,añoegreso,educacion_superior,titulos,cursos,comentarios,link,fecha,numero) values
-                                              ('$name','$apellidos','$rut','$region','$comuna','$direccion','$telefonocomp',$telefonocomp2,'$email','$universidad','$añoegreso','$media','$titulos','$cursos','$message','$nombre_archivo','$fecha',$numero[0]);";
+                                              $sql=("REPLACE into postulaciones
+                                                (practica,
+                                                nombre,
+                                                apellidos,
+                                                rut,
+                                                region,
+                                                comuna,
+                                                direccion,
+                                                telefono,
+                                                telefono2,
+                                                email,
+                                                universidad,
+                                                añoegreso,
+                                                educacion_superior,
+                                                titulos,
+                                                cursos,
+                                                areainteres,
+                                                areaesp,
+                                                link,
+                                                fecha,
+                                                numero) values
+                                              ('$practica',
+                                                '$name',
+                                                '$apellidos',
+                                                '$rut',
+                                                '$region',
+                                                '$comuna',
+                                                '$direccion',
+                                                '$telefonocomp',
+                                                $telefonocomp2,
+                                                '$email',
+                                                '$universidad',
+                                                '$añoegreso',
+                                                '$media',
+                                                '$titulos',
+                                                '$cursos',
+                                                '$areainteres',
+                                                '$areaesp',
+                                                '$nombre_archivo',
+                                                '$fecha',
+                                                $numero[0])");
 
 
                                               $result=mysqli_query($conn,$sql);
