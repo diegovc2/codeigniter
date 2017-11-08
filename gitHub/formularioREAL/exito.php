@@ -12,18 +12,12 @@
            </div>
            <div class="card-action">
              <a href="form1.php">Formulario</a>
-             <a href= "http://www.atmspa.cl">Home</a>
+             <a href="www.atmspa.cl">Home</a>
            </div>
          </div>
      </div>
 
-<script>
 
-  function redirect(){
-
-  }
-
-</script>
 
  <?php    include_once 'footer.php';
  ?>
