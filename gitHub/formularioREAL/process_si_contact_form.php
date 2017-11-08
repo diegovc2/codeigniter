@@ -4,6 +4,7 @@ date_default_timezone_set("America/Santiago");
 
 function process_si_contact_form()
 {
+if (isset($_POST['fd'])){
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && @$_POST['do'] == 'contact') {
         // if the form has been submitted
@@ -56,6 +57,11 @@ function process_si_contact_form()
           $telefono2=$_POST['telefono2'];
           $telefonocomp2=$codigo2.$telefono2;
           $añoegreso=$_POST['añoegreso'];
+          /*$array=json_decode(stripslashes($_POST['array']));
+          print_r($array);
+          die();
+*/
+        //  include 'processtab.php';
 
         if(!(isset($_POST['practica'])))
           $practica="";
@@ -268,6 +274,7 @@ function process_si_contact_form()
 
 
         }//POST
+      }
       } // function process_si_contact_form()
 
 
