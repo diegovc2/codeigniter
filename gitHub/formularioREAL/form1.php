@@ -381,6 +381,48 @@
 </div>
 </div>
 
+<div class="row">
+ <div class="input-field col s3 ">
+   <input type="text" id="nombretab" name="nombretab" placeholder="nombre del curso"  required>
+
+ </div>
+ <div class="input-field col s3 ">
+   <input type="text" id="instab" name="instab" placeholder="Institución"  required>
+
+ </div>
+ <div class="input-field col s3 ">
+   <input type="number" id="añotab" name="añotab" placeholder="Duración (años) del curso"  required>
+
+ </div>
+
+ <button class="btn waves-effect waves-light #e65100 orange darken-4"  onClick="updateTabla()">
+      <i class="material-icons">add</i>
+ </button>
+
+ </div>
+
+ <table id="tablauni" class="responsive-table striped">
+     <thead>
+       <tr>
+           <th>Nombre</th>
+           <th>Institución</th>
+           <th>Año</th>
+           <th></th>
+       </tr>
+     </thead>
+
+     <tbody>
+       <tr>
+         <td></td>
+         <td></td>
+         <td></td>
+       </tr>
+
+     </tbody>
+   </table>
+
+
+
 
 <h2>Areas de Interés</h2>
 
@@ -459,6 +501,75 @@
  else
    element2.style.display='none';
 }
+
+
+ function updateTabla(){
+
+   var nombre=document.getElementById('nombretab');
+   var añotab=document.getElementById('añotab');
+
+
+   var instab=document.getElementById('instab');
+
+   var table = document.getElementById("tablauni");
+   var row=table.insertRow(1);
+   var cell1=row.insertCell(0);
+   var cell2=row.insertCell(1);
+   var cell3=row.insertCell(2);
+   var elim=row.insertCell(3);
+   cell1.innerHTML=nombre.value;
+   cell2.innerHTML=añotab.value;
+   cell3.innerHTML=nombre.value;
+   elim.innerHTML= /* "<button class='btn waves-effect waves-light #e65100 orange darken-4'  onClick='updateTabla()'>
+        <i class='material-icons'>add</i>
+   </button>";*/
+ "<button class='btn' oncliCk='borrarFila(this)'>  <i class='material-icons'>close</i> </button>"
+
+
+ }
+
+ function borrarFila(o){
+   var p=o.parentNode.parentNode;
+       p.parentNode.removeChild(p);
+ }
+
+ function getTabla(){
+
+   var array=[];
+   var conta=0;
+
+ var oTable = document.getElementById('tablauni');
+
+     //gets rows of table
+     var rowLength = oTable.rows.length;
+
+     //loops through rows
+     for (i = 1; i < rowLength-1; i){
+
+       //gets cells of current row
+        var oCells = oTable.rows.item(i).cells;
+
+        //gets amount of cells of current row
+        array[conta]=[];
+        var cellLength = oCells.length;
+
+        //loops through each cell in current row
+        for(var j = 0; j < cellLength-1; j){
+
+               // get your cell info here
+
+               var cellVal = oCells.item(j).innerHTML;
+
+               array[conta].push(cellVal);
+            }
+
+            conta;
+     }
+
+   return array;
+
+   }
+
 
     function processForm()
     {
