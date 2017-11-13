@@ -366,7 +366,7 @@
 
 <div class="input-field col s12 ">
   <i class="material-icons prefix">mode_edit</i>
-<textarea data-length="400"  placeholder="Agronomía"  class="tooltipped materialize-textarea scale-transition " name="titulos" data-tooltip="Especificar por favor grado académico" maxlength="400"></textarea>
+<textarea data-length="400"  placeholder="Ej:Agronomía Universidad del Desarrollo 2014"  class="tooltipped materialize-textarea scale-transition " name="titulos" data-tooltip="Especificar por favor grado académico" maxlength="400"></textarea>
 </div>
 </div>
 
@@ -377,17 +377,17 @@
 
 <div class="input-field col s12 ">
   <i class="material-icons prefix">mode_edit</i>
-<textarea  data-length="400" placeholder="Magister en Dibujo Técnico en la SEK 1999"  class="scale-transition tooltipped materialize-textarea " name="cursos" data-tooltip="Especificar año e institución" maxlength="400"></textarea>
+<textarea  data-length="400" placeholder="Ej: Magister en Dibujo Técnico en la SEK 1999"  class="scale-transition tooltipped materialize-textarea " name="cursos" data-tooltip="Especificar año e institución" maxlength="400"></textarea>
 </div>
 </div>
 
 
 <div id="especialidad" class="row scale-transition">
-  <h2>Areas de Especialidad</h2>
+  <h2>Especialidades</h2>
 
     <div class="input-field col s12 ">
       <i class="material-icons prefix">mode_edit</i>
-    <textarea data-length="400" placeholder="Predicción de encuentro de Minerales" class="tooltipped materialize-textarea " name="areaesp" data-tooltip="Describa Aquí" maxlength="400"></textarea>
+    <textarea data-length="400" placeholder="Ej: Predicción de encuentro de Minerales" class="tooltipped materialize-textarea " name="areaesp" data-tooltip="Describa Aquí" maxlength="400"></textarea>
     </div>
 </div>
 
@@ -398,7 +398,7 @@
     <div class="input-field col s12 ">
       <i class="material-icons prefix">mode_edit</i>
     <textarea data-length="400"  class="tooltipped materialize-textarea "
-    placeholder="Trabajé durante 5 años en CODELCO, en el sector de Topografía de la mina de los Cobres" name="areainteres" data-tooltip="Describa Aquí" maxlength="400"></textarea>
+    placeholder="Ej: Trabajé durante 5 años en CODELCO, en el sector de Topografía de la mina de los Cobres" name="areainteres" data-tooltip="Describa Aquí" maxlength="400"></textarea>
     </div>
 </div>
 
@@ -452,7 +452,7 @@
 
   <p>
      <div class="card-panel orange">
-       <span class="card-title white-text">INGRESE EL CODIGO DE SEGURIDAD</span>
+       <span class="card-title white-text"><h5>INGRESE EL CODIGO DE SEGURIDAD</h5></span>
 
     <?php require_once 'securimage/securimage.php'; echo Securimage::getCaptchaHtml(array('input_name' => 'ct_captcha')); ?>
   </div>
