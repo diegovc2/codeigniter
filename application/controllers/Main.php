@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿
+=======
+
+>>>>>>> da49cccfeb3312a73c41dce61f575c83c475b5e3
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Main extends CI_Controller {
@@ -35,9 +39,9 @@ $crud->set_subject('Postulaciones');
 $crud->set_table('postulaciones');
 $crud->columns('practica','nombre','apellidos','rut','region','comuna','direccion','telefono','telefono2','email','universidad','añoegreso','educacion_superior','titulos','cursos','areaesp','areainteres','fecha');
 $crud->add_action('Curriculum', '', '','ui-icon-image',array($this,'just_a_test'));
-$crud->display_as('añoegreso','Año de Egreso');
+$crud->display_as('añoegreso','Años de Experiencia');
 $crud->display_as('areaesp','Área de Especialidad');
-$crud->display_as('areainteres','Área de Interés');
+$crud->display_as('areainteres','Reseña Laboral');
 
 $crud->display_as('fecha','Fecha de Postulación');
 
@@ -68,3 +72,9 @@ function just_a_test($primary_key , $row)
 
 
 }
+<<<<<<< HEAD
+=======
+
+/* End of file Main.php */
+/* Location: ./application/controllers/Main.php */
+>>>>>>> da49cccfeb3312a73c41dce61f575c83c475b5e3

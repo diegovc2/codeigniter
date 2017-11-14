@@ -82,14 +82,14 @@
         <input type="hidden" name="do" value="contact" />
 
         <p>
-      <input type="checkbox" id="practica" name="practica"/>
+      <input type="checkbox" id="practica" name="practica" />
       <label for="practica">Solicitud de Práctica</label>
     </p>
 
 
-        <div class="input-field col s12">
-    <input type="text" name="name"  required>
-    <label>Nombre</label>
+        <div  class="input-field col s12">
+    <input type="text" name="name" id="name"  required>
+    <label id="lblnombre" >Nombre</label>
 
   </div>
 
@@ -289,20 +289,16 @@
 <input type="text" name="color" id="color" style='display:none;'/>
 </div>
 
-<div class="row">
-  <div class="input-field col s12">
 
-  <input type="text" id="añoegreso" name="añoegreso" class="tooltipped" data-tooltip="Año en el que sacó su Titulo"  required>
-  <label>Año de Egreso</label>
-</div>
-</div>
 
 <br>
 <div class="row">
 
+<div class="input-field col s6">
   <label>Telefono Principal</label>
   <br>
-<div class="input-field col s1">
+  <br>
+<div class="input-field col s2">
 
   <input
  type="tel" id="codigo" name="codigo" placeholder="+569" pattern="[\+][0-9]{3}"  required  maxlength="4">
@@ -317,12 +313,14 @@
 </div>
 
 </div>
-<br>
-<div class="row">
 
+<br>
+
+<div class="input-field col s6">
 <label>Telefono Opcional</label>
 <br>
-<div class="input-field col s1">
+<br>
+<div class="input-field col s2">
 
   <input
  type="tel" id="codigo2" name="codigo2" placeholder="+569" pattern="[\+][0-9]{3}"   maxlength="4">
@@ -355,51 +353,84 @@
 <label>Enseñanza Superior</label>
 
 <div class="row">
-<div class="input-field col s6 ">
+<div class="input-field col s12 ">
   <i class="material-icons prefix">mode_edit</i>
-<textarea data-length="400" data-tooltip="Ingresar nombre de universidad/instituto y su año de egreso"  class="tooltipped materialize-textarea " name="media"  maxlength="400"></textarea>
+<textarea data-length="400" data-tooltip="Ingresar nombre de universidad/instituto y su año de egreso" placeholder="2009 Universidad Las Américas Agronomía"  class="tooltipped materialize-textarea " name="media"  maxlength="400"></textarea>
 </div>
 </div>
 
 
-<label>Titulos</label>
 
-<div class="row">
-<div class="input-field col s6 ">
+<div id="titulos" class="row scale-transition">
+  <label id="lbltitulos" class="scale-transition">Titulos</label>
+
+<div class="input-field col s12 ">
   <i class="material-icons prefix">mode_edit</i>
-<textarea data-length="400"  class="tooltipped materialize-textarea " name="titulos" data-tooltip="Especificar por favor grado académico" maxlength="400"></textarea>
+<textarea data-length="400"  placeholder="Ej:Agronomía Universidad del Desarrollo 2014"  class="tooltipped materialize-textarea scale-transition " name="titulos" data-tooltip="Especificar por favor grado académico" maxlength="400"></textarea>
 </div>
 </div>
 
-<label>Cursos y diplomados</label>
 
-<div class="row">
+<div id="cursos" class="row scale-transition">
 
-<div class="input-field col s6 ">
+  <label class="scale-transition" id="lblcursos">Cursos y diplomados</label>
+
+<div class="input-field col s12 ">
   <i class="material-icons prefix">mode_edit</i>
-<textarea data-length="400"  class="tooltipped materialize-textarea " name="cursos" data-tooltip="Especificar año e institución" maxlength="400"></textarea>
+<textarea  data-length="400" placeholder="Ej: Magister en Dibujo Técnico en la SEK 1999"  class="scale-transition tooltipped materialize-textarea " name="cursos" data-tooltip="Especificar año e institución" maxlength="400"></textarea>
 </div>
 </div>
 
 
-<h2>Areas de Interés</h2>
+<div id="especialidad" class="row scale-transition">
+  <h2>Especialidades</h2>
 
-<div class="row">
-
-    <div class="input-field col s6 ">
+    <div class="input-field col s12 ">
       <i class="material-icons prefix">mode_edit</i>
-    <textarea data-length="400"  class="tooltipped materialize-textarea " name="areainteres" data-tooltip="Describa Aquí" maxlength="400"></textarea>
+    <textarea data-length="400" placeholder="Ej: Predicción de encuentro de Minerales" class="tooltipped materialize-textarea " name="areaesp" data-tooltip="Describa Aquí" maxlength="400"></textarea>
     </div>
 </div>
 
-<h2>Areas de Especialidad</h2>
+<h2>Reseña Laboral</h2>
 
 <div class="row">
 
-    <div class="input-field col s6 ">
+    <div class="input-field col s12 ">
       <i class="material-icons prefix">mode_edit</i>
-    <textarea data-length="400"  class="tooltipped materialize-textarea " name="areaesp" data-tooltip="Describa Aquí" maxlength="400"></textarea>
+    <textarea data-length="400"  class="tooltipped materialize-textarea "
+    placeholder="Ej: Trabajé durante 5 años en CODELCO, en el sector de Topografía de la mina de los Cobres" name="areainteres" data-tooltip="Describa Aquí" maxlength="400"></textarea>
     </div>
+</div>
+
+
+
+
+
+
+<div id="añoegreso" class="row scale-transition">
+  <div class="input-field col s12">
+
+    <div class="input-field col s6">
+      <label class="active">Años de Experiencia</label>
+
+    <select   name="añoegreso">
+      <option  value="0">Recien Egresado</option>
+      <option  value="1">1</option>
+      <option  value="2">2</option>
+      <option  value="3">3</option>
+      <option  value="4">4</option>
+      <option  value="5">5</option>
+      <option  value="6">6</option>
+      <option  value="7">7</option>
+      <option  value="8">8</option>
+      <option  value="9">9</option>
+      <option  value="10">10 o más</option>
+
+    </select>
+
+
+    </div>
+  </div>
 </div>
 
 <label>Adjunte su CV (sólo archivos .pdf)</label>
@@ -415,13 +446,16 @@
    </div>
  </div>
 <br></br>
-    <label>Ingrese el codigo de seguridad</label>
 <br>
 <br>
 
 
   <p>
+     <div class="card-panel orange">
+       <span class="card-title white-text"><h5>INGRESE EL CODIGO DE SEGURIDAD</h5></span>
+
     <?php require_once 'securimage/securimage.php'; echo Securimage::getCaptchaHtml(array('input_name' => 'ct_captcha')); ?>
+  </div>
   </p>
 
 
@@ -440,7 +474,11 @@
 
 
 <script type="text/javascript">
+
+
     $.noConflict();
+
+
 
     function reloadCaptcha()
     {
@@ -529,7 +567,26 @@
 
 
 
+  $(function() {
+    $('#practica').change(function() {
+      if(this.checked){
+  $('#cursos').removeClass('scale-in').addClass('scale-out');
+  $('#titulos').removeClass('scale-in').addClass('scale-out');
+  $('#especialidad').removeClass('scale-in').addClass('scale-out');
+  $('#añoegreso').removeClass('scale-in').addClass('scale-out');
 
+}else{
+  $('#cursos').removeClass('scale-out').addClass('scale-in');
+  $('#titulos').removeClass('scale-out').addClass('scale-in');
+  $('#especialidad').removeClass('scale-out').addClass('scale-in');
+  $('#añoegreso').removeClass('scale-out').addClass('scale-in');
+}
+});
+
+
+
+
+  });
 
 
 

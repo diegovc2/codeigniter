@@ -4,6 +4,9 @@ date_default_timezone_set("America/Santiago");
 
 function process_si_contact_form()
 {
+  try{
+
+
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && @$_POST['do'] == 'contact') {
         // if the form has been submitted
@@ -52,10 +55,25 @@ function process_si_contact_form()
           $codigo=$_POST['codigo'];
           $telefono=$_POST['telefono'];
           $telefonocomp=$codigo.$telefono;
-          $codigo2=$_POST['codigo2'];
-          $telefono2=$_POST['telefono2'];
-          $telefonocomp2=$codigo2.$telefono2;
+
+
+
+
           $añoegreso=$_POST['añoegreso'];
+
+          //<---OPCIONALES-->
+
+          if (isset($_POST['telefono2'])){
+          $telefono2=$_POST['telefono2'];
+          $codigo2=$_POST['codigo2'];
+
+          $telefonocomp2=$codigo2.$telefono2;
+        }else{
+            $telefono2="";
+            $codigo2="";
+              $telefonocomp2="";
+        }
+
 
         if(!(isset($_POST['practica'])))
           $practica="";
@@ -212,7 +230,7 @@ function process_si_contact_form()
                                                 '$comuna',
                                                 '$direccion',
                                                 '$telefonocomp',
-                                                $telefonocomp2,
+                                                '$telefonocomp2',
                                                 '$email',
                                                 '$universidad',
                                                 '$añoegreso',
@@ -225,40 +243,34 @@ function process_si_contact_form()
                                                 '$fecha',
                                                 $numero[0])");
 
-
+try{
                                               $result=mysqli_query($conn,$sql);
 
-                                            if (mysqli_affected_rows($conn)){
+                                          }catch(Exception $e){
+         print_R($e);
+         die();
+     }
+
+                                            if (mysqli_affected_rows($conn)>0){
                                                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                                                   $return = array('error' => 0, 'message' => 'OK');
 
 
                                       }
+
                                         else   $return = array('error' => 1, 'message' => $target_file);
 
 
 
                     }
 
-                    else $return = array('error' => 321, 'message' => "No se registró");
+                    else $return = array('error' => 321, 'message' => mysqli_error($conn).$sql);
 
                     }
 
 
 
 
-          /*  if(mail($to,$subject,$body,$from)){
-              $return = array('error' => 6, 'message' => 'Mail Enviado');
-              die(json_encode($return));
-
-
-
-} else{
-
-  $return = array('error' => 7, 'message' => 'Mail NO enviado');
-  die(json_encode($return));
-}
-*/
         die(json_encode($return));
 
 
@@ -268,6 +280,11 @@ function process_si_contact_form()
 
 
         }//POST
+
+      }catch(Exception $e){
+               print_R($e);
+               die();
+           }
       } // function process_si_contact_form()
 
 
