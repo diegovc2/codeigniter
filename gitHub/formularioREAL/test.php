@@ -23,6 +23,9 @@ try {
 =======
     $mail->SMTPSecure = 'true';                            // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 587;                                    // TCP port to connect to
+<<<<<<< HEAD
+>>>>>>> parent of 7868742... Archivos de Mailer
+=======
 >>>>>>> parent of 7868742... Archivos de Mailer
 
     //Recipients
@@ -39,6 +42,7 @@ try {
 
     //Content
     $mail->isHTML(true);                                  // Set email format to HTML
+<<<<<<< HEAD
 <<<<<<< HEAD
     $mail->Subject = 'Postulación de '.$name.' '.$fecha;
 <<<<<<< HEAD
@@ -65,6 +69,11 @@ try {
                     '<p>Especialidades:  '.$areaesp.'<p>'
     ;
 
+=======
+    $mail->Subject = 'Here is the subject';
+    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+>>>>>>> parent of 7868742... Archivos de Mailer
 =======
     $mail->Subject = 'Here is the subject';
     $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
