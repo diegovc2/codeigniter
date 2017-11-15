@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-﻿
-=======
 
->>>>>>> da49cccfeb3312a73c41dce61f575c83c475b5e3
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Main extends CI_Controller {
@@ -72,9 +68,4 @@ function just_a_test($primary_key , $row)
 
 
 }
-<<<<<<< HEAD
-=======
 
-/* End of file Main.php */
-/* Location: ./application/controllers/Main.php */
->>>>>>> da49cccfeb3312a73c41dce61f575c83c475b5e3
