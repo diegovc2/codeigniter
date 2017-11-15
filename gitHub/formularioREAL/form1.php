@@ -516,6 +516,7 @@
             if (data.error === 0) {
 
               window.location.href="exito.php";
+
             } else {
                 alert("Hubo un error con su cuestionario.\n\n" + data.message);
 
