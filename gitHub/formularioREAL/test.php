@@ -11,12 +11,12 @@ $mail = new PHPMailer(true);                              // Passing `true` enab
 try {
     //Server settings
     $mail->isSMTP();                                      // Set mailer to use SMTP
-    $mail->Host = 'smtp.office365.com';  // Specify main and backup SMTP servers
+    $mail->Host = '192.168.0.14';  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
     $mail->Username = 'doc@atmsa.cl';                 // SMTP username
     $mail->Password = 'Aiai9884';                           // SMTP password
-    $mail->SMTPSecure = 'true';                            // Enable TLS encryption, `ssl` also accepted
-    $mail->Port = 587;                                    // TCP port to connect to
+    $mail->SMTPSecure = 'false';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 25;                                    // TCP port to connect to
     $mail->CharSet = 'UTF-8';
 
     //Recipients
@@ -33,10 +33,10 @@ try {
 
     //Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Postulación de '.$name.' '.$fecha';
+    $mail->Subject = 'Postulación de '.$name.' '.$fecha;
     $mail->Body    =
-		    '<p>Practica:  '.$practica.'<p>'.
-		    '<p>Nombre:  '.$name.'<p>'.
+		            '<p>Practica:  '.$practica.'<p>'.
+		            '<p>Nombre:  '.$name.'<p>'.
                     '<p>Apellidos:  '.$apellidos.'<p>'.
                     '<p>Rut:  '.$rut.'<p>'.
                     '<p>Region:  '.$region.'<p>'.
