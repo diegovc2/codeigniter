@@ -33,7 +33,7 @@ try {
 
     //Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Postulación de '.$name.' '.$fecha';
+    $mail->Subject = 'Postulación de '.$name.' '.$fecha;
     $mail->Body    =
 		    '<p>Practica:  '.$practica.'<p>'.
 		    '<p>Nombre:  '.$name.'<p>'.
