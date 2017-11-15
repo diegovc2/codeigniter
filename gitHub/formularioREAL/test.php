@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // Import PHPMailer classes into the global namespace
 // These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
@@ -33,8 +33,10 @@ try {
 
     //Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Postulación de '.$name.' '.$fecha;
-    $mail->Body    = '<p>Nombre:  '.$name.'<p>'.
+    $mail->Subject = 'Postulación de '.$name.' '.$fecha';
+    $mail->Body    =
+		    '<p>Practica:  '.$practica.'<p>'.
+		    '<p>Nombre:  '.$name.'<p>'.
                     '<p>Apellidos:  '.$apellidos.'<p>'.
                     '<p>Rut:  '.$rut.'<p>'.
                     '<p>Region:  '.$region.'<p>'.
