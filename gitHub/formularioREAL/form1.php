@@ -104,7 +104,7 @@
 
     <div class="input-field col s12">
  <input required type="text" id="rut" name="rut" class="tooltipped" data-tooltip="Minimo 7 Dígitos">
- <label>Rut</label>
+ <label>RUT</label>
 </div>
 
 
@@ -114,7 +114,7 @@
 
 <div class="row">
     <div class="input-field col s6">
-      <label class="active">Region</label>
+      <label class="active">Región</label>
 
     <select  id="regiones" name="regiones">
       <option selected disabled value=""></option>
@@ -135,12 +135,74 @@
   <div class="input-field col s12">
 
   <input type="text" name="direccion" class="tooltipped" data-tooltip="Ingrese Calle y Número"  required>
-  <label>Direccion</label>
+  <label>Domicilio</label>
+
+</div>
+
+
+
+
+
+<br>
+<div class="row">
+
+<div class="input-field col s6">
+  <label>Teléfono Principal (Fijo o Móvil)</label>
+  <br>
+  <br>
+<div class="input-field col s2">
+
+  <input
+ type="tel" id="codigo" name="codigo" placeholder="+569" pattern="[\+][0-9]{3}"  required  maxlength="4">
+ <label class="active">Código</label>
+
+</div>
+
+<div class="input-field col s4 ">
+      <input id="telefono" data-tooltip="8 Dígitos" class="tooltipped" title="Sólo Números y un m�nimo de 8 caracteres" type="tel" name="telefono" placeholder="1111111" pattern="[0-9]{8}"  required  maxlength="8"/>
+      <label class="active">Teléfono</label>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="input-field col s6">
+<label>Teléfono Opcional</label>
+<br>
+<br>
+<div class="input-field col s2">
+
+  <input
+ type="tel" id="codigo2" name="codigo2" placeholder="+569" pattern="[\+][0-9]{3}"   maxlength="4">
+ <label class="active">Código</label>
+
+</div>
+
+<div class="input-field col s4 ">
+
+      <input id="telefono2" data-tooltip="8 Dígitos" class="tooltipped" title="Sólo Números y un mínimo de 8 caracteres" type="tel" name="telefono2" placeholder="1111111" pattern="[0-9]{8}"    maxlength="8"/>
+      <label class="active">Teléfono</label>
+
+</div>
 
 </div>
 
 <div class="row">
-  <label>Universidad</label>
+
+<div class="input-field col s12">
+    <label>Correo Electrónico</label>
+    <input name="email" type="email" class="tooltipped" data-tooltip="ejemplo@dominio.com"required>
+</div>
+
+</div>
+
+<h2>DATOS ACADÉMICOS</h2>
+
+
+<div class="row">
+  <label>Instituto de Educación Superior</label>
 
 <select name="universidad" onchange='checkOtro(this.value);' id="universidad" class="form-control">
 
@@ -291,78 +353,8 @@
 
 
 
-<br>
-<div class="row">
-
-<div class="input-field col s6">
-  <label>Telefono Principal</label>
-  <br>
-  <br>
-<div class="input-field col s2">
-
-  <input
- type="tel" id="codigo" name="codigo" placeholder="+569" pattern="[\+][0-9]{3}"  required  maxlength="4">
- <label class="active">Codigo</label>
-
-</div>
-
-<div class="input-field col s4 ">
-      <input id="telefono" data-tooltip="8 Dígitos" class="tooltipped" title="Sólo Números y un m�nimo de 8 caracteres" type="tel" name="telefono" placeholder="1111111" pattern="[0-9]{8}"  required  maxlength="8"/>
-      <label class="active">Telefono</label>
-
-</div>
-
-</div>
-
-<br>
-
-<div class="input-field col s6">
-<label>Telefono Opcional</label>
-<br>
-<br>
-<div class="input-field col s2">
-
-  <input
- type="tel" id="codigo2" name="codigo2" placeholder="+569" pattern="[\+][0-9]{3}"   maxlength="4">
- <label class="active">Codigo</label>
-
-</div>
-
-<div class="input-field col s4 ">
-
-      <input id="telefono2" data-tooltip="8 Dígitos" class="tooltipped" title="Sólo Números y un mínimo de 8 caracteres" type="tel" name="telefono2" placeholder="1111111" pattern="[0-9]{8}"    maxlength="8"/>
-      <label class="active">Telefono</label>
-
-</div>
-
-</div>
-
-<div class="row">
-
-<div class="input-field col s12">
-    <label>Email</label>
-    <input name="email" type="email" class="tooltipped" data-tooltip="ejemplo@dominio.com"required>
-</div>
-
-</div>
-
-<h2>DATOS ACADEMICOS</h2>
-
-
-
-<label>Enseñanza Superior</label>
-
-<div class="row">
-<div class="input-field col s12 ">
-  <i class="material-icons prefix">mode_edit</i>
-<textarea data-length="400" data-tooltip="Ingresar nombre de universidad/instituto y su año de egreso" placeholder="2009 Universidad Las Américas Agronomía"  class="tooltipped materialize-textarea " name="media"  maxlength="400"></textarea>
-</div>
-</div>
-
-
-
 <div id="titulos" class="row scale-transition">
-  <label id="lbltitulos" class="scale-transition">Titulos</label>
+  <label id="lbltitulos" class="scale-transition">Títulos</label>
 
 <div class="input-field col s12 ">
   <i class="material-icons prefix">mode_edit</i>
@@ -373,11 +365,20 @@
 
 <div id="cursos" class="row scale-transition">
 
-  <label class="scale-transition" id="lblcursos">Cursos y diplomados</label>
+  <label class="scale-transition" id="lblcursos">Cursos y Diplomados</label>
 
 <div class="input-field col s12 ">
   <i class="material-icons prefix">mode_edit</i>
 <textarea  data-length="400" placeholder="Ej: Magister en Dibujo Técnico en la SEK 1999"  class="scale-transition tooltipped materialize-textarea " name="cursos" data-tooltip="Especificar año e institución" maxlength="400"></textarea>
+</div>
+</div>
+
+<label>Otros Estudios</label>
+
+<div class="row">
+<div class="input-field col s12 ">
+  <i class="material-icons prefix">mode_edit</i>
+<textarea data-length="400" data-tooltip="Ingresar nombre de universidad/instituto y su año de egreso" placeholder="2009 Universidad Las Américas Agronomía"  class="tooltipped materialize-textarea " name="media"  maxlength="400"></textarea>
 </div>
 </div>
 
@@ -512,10 +513,12 @@
           contentType: false,
           dataType: 'json'
 
+
         }).done(function(data) {
             if (data.error === 0) {
 
               window.location.href="exito.php";
+                  
 
             } else {
                 alert("Hubo un error con su cuestionario.\n\n" + data.message);
@@ -526,7 +529,9 @@
                 reloadCaptcha();
 
             }   // tell jQuery not to set contentType
-          });
+          })
+          .fail(function(data) { alert (JSON.stringify(data)); })
+          .always(function() { alert("complete"); });
 
 
         return false;
@@ -572,15 +577,24 @@
     $('#practica').change(function() {
       if(this.checked){
   $('#cursos').removeClass('scale-in').addClass('scale-out');
-  $('#titulos').removeClass('scale-in').addClass('scale-out');
+  $('#lbltitulos').html("Carrera");
   $('#especialidad').removeClass('scale-in').addClass('scale-out');
   $('#añoegreso').removeClass('scale-in').addClass('scale-out');
+  $("#cursos").toggle();
+  $("#especialidad").toggle();
+  $("#añañoegreso").toggle();
+
 
 }else{
   $('#cursos').removeClass('scale-out').addClass('scale-in');
   $('#titulos').removeClass('scale-out').addClass('scale-in');
   $('#especialidad').removeClass('scale-out').addClass('scale-in');
   $('#añoegreso').removeClass('scale-out').addClass('scale-in');
+  $('#lbltitulos').html("Títulos");
+  $("#cursos").toggle();
+  $("#especialidad").toggle();
+  $("#añañoegreso").toggle();
+
 }
 });
 
