@@ -133,14 +133,14 @@ function process_si_contact_form()
                     $extension= $partes['extension'];
 
 
-                    $correccion=array("-",".","/",":"," ");
+                    $correccion=array("-",".","/",":"," ","'\'");
                     $rutstr=str_replace($correccion,"",trim($rut));
                     $trapellidos=str_replace($correccion,"",trim($apellidos));
                     $trnombre=str_replace($correccion,"",trim($name));
                     $trfecha= str_ireplace($correccion,"",(trim($fecha)));
 
                     $nombre_archivo=$trapellidos.$trnombre.$rutstr.$trfecha.".".$extension;
-                    $target_file =$target_dir . basename($nombre_archivo);
+                    $target_file =$target_dir.$nombre_archivo;
 
                     if ($region==="") {
                       $return = array('error' => 8, 'message' => 'Debe Seleccionar una Region');
@@ -162,7 +162,7 @@ function process_si_contact_form()
                     if ($_FILES["fileToUpload"]["size"] > 500000) {
                       $return = array('error' => 3, 'message' => 'Archivo muy Grande');
                         $uploadOk = 0;
-                        die(json_encode($return));
+                        die(3);
 
                     }
                     // Allow certain file formats
@@ -253,8 +253,8 @@ try{
 
                                             if (mysqli_affected_rows($conn)>0){
                                                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                                                  $return = array('error' => 0, 'message' => 'OK');
-                                                  die(json_encode($return));
+                                                  include("test.php");
+                                                  die(0);
 
 
 

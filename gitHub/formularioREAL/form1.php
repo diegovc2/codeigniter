@@ -511,22 +511,26 @@
           data: fd,
           processData: false,  // tell jQuery not to process the data
           contentType: false,
-          dataType: 'json'
+          dataType: 'text'
 
 
         }).done(function(data) {
-            if (data.error === 0) {
+            if (data == 0) {
 
               window.location.href="exito.php";
-                  
+
 
             } else {
-                alert("Hubo un error con su cuestionario.\n\n" + data.message);
+                alert("Hubo un error con su cuestionario.\n\n");
 
                 if (data.message.indexOf('Incorrect security code') >= 0) {
                     jQuery('#captcha_code').val('');
                 }
                 reloadCaptcha();
+
+                if(data==3){
+                  alert("Archivo muy grande");
+                }
 
             }   // tell jQuery not to set contentType
           })

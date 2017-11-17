@@ -7,6 +7,38 @@ use PHPMailer\PHPMailer\Exception;
 //Load composer's autoloader
 require 'vendor/autoload.php';
 
+
+    $data = array();
+    $errors = array();
+
+    if (empty($_POST["name"])) {
+        $errors["name"] = "Name is required";
+    }
+
+    if (empty($_POST["email"])){
+        $errors["email"] = "Email is required";
+    }
+
+    if (empty($_POST["message"])){
+        $errors["message"] = "Message is required";
+    }
+
+    if (! empty($errors)){
+        $data["success"] = false;
+        $data["errors"] = $errors;
+    } else {
+        $data['success'] = true;
+        $data['name'] = $name;
+        $data['email'] = $email;
+        $data['subject'] = $subject;
+        $data['message'] = $message;
+
+
+
+    }
+
+
+
 $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 //try {
     //Server settings
@@ -54,8 +86,10 @@ $mail = new PHPMailer(true);                              // Passing `true` enab
                     '<p>Especialidades:  '.$areaesp.'<p>'
     ;
 
+    if(!$mail->send()) {
+       $data['error']['title'] = 'Message could not be sent.';
+       $data['error']['details'] = 'Mailer Error: ' . $mail->ErrorInfo;
+       exit;
+    }
 
-    $mail->send();
-/*} catch (Exception $e) {
-    echo 'Mailer Error: ' . $mail->ErrorInfo;
-}*/
+    $data['success']['title'] = 'Message has been sent';
