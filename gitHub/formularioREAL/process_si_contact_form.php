@@ -262,7 +262,7 @@ try{
                                             if (mysqli_affected_rows($conn)>0){
                                                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                                                    $return = array('error' => 0, 'message' => "OK");
-
+                                                  include("test.php");
                                                   //$return = array('error' => 0, 'message' => 'OK');
                                                   die(json_encode($return));
 

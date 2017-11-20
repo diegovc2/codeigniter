@@ -438,10 +438,12 @@
 <br>
 <br>
 <div class="file-field input-field">
+  <div class="subir">
    <div class="btn #e65100 orange darken-4">
      <span>Subir Archivo</span>
      <input type="file" name="fileToUpload" id="fileToUpload" required/>
    </div>
+ </div>
    <div class="file-path-wrapper">
      <input class="file-path validate"  name ="path" type="text">
    </div>

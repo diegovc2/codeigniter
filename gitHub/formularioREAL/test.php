@@ -94,15 +94,8 @@ $mail = new PHPMailer(true);                              // Passing `true` enab
     }
 
     $data['success']['title'] = 'Message has been sent';
-=======
     $mail->Subject = 'Here is the subject';
     $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
->>>>>>> parent of 7868742... Archivos de Mailer
 
     $mail->send();
-    echo 'Message has been sent';
-} catch (Exception $e) {
-    echo 'Message could not be sent.';
-    echo 'Mailer Error: ' . $mail->ErrorInfo;
-}
