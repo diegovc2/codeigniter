@@ -10,7 +10,7 @@ require 'vendor/autoload.php';
 $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 try {
     //Server settings
-    $mail->SMTPDebug = 2;                                 // Enable verbose debug output
+    $mail->SMTPDebug = 4;                                 // Enable verbose debug output
     $mail->isSMTP();                                      // Set mailer to use SMTP
     $mail->Host = '192.168.0.14';  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
@@ -22,7 +22,7 @@ try {
     //Recipients
     $mail->setFrom('doc@atmsa.cl', 'Mailer');
     $mail->addAddress('dveloso@atmsa.cl');               // Name is optional
-  
+
 
     //Attachments
   //  $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
