@@ -42,7 +42,7 @@ require 'vendor/autoload.php';
 $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 //try {
     //Server settings
-    $mail->SMTPDebug = 4;                                 // Enable verbose debug output
+    $mail->SMTPDebug = 0;                                 // Enable verbose debug output
     $mail->CharSet = 'UTF-8';
 
     $mail->isSMTP();                                      // Set mailer to use SMTP
@@ -94,10 +94,3 @@ $mail = new PHPMailer(true);                              // Passing `true` enab
        $data['error']['details'] = 'Mailer Error: ' . $mail->ErrorInfo;
        exit;
     }
-
-    $data['success']['title'] = 'Message has been sent';
-    $mail->Subject = 'Here is the subject';
-    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-    $mail->send();
