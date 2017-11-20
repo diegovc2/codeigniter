@@ -12,7 +12,7 @@ try {
     //Server settings
     $mail->SMTPDebug = 4;                                 // Enable verbose debug output
     $mail->isSMTP();                                      // Set mailer to use SMTP
-    $mail->Host = '192.168.0.14';  // Specify main and backup SMTP servers
+    $mail->Host = '192.168.0.143';  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
     $mail->Username = 'doc@atmsa.cl';                 // SMTP username
     $mail->Password = 'Aiai9884';                           // SMTP password
