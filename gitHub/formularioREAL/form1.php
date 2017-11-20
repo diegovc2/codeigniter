@@ -434,7 +434,7 @@
   </div>
 </div>
 
-<label>Adjunte su CV (sólo archivos .pdf)</label>
+<label>Adjunte su CV (sólo archivos .pdf menores a 2 MB)</label>
 <br>
 <br>
 <div class="file-field input-field">
@@ -511,31 +511,28 @@
           data: fd,
           processData: false,  // tell jQuery not to process the data
           contentType: false,
-          dataType: 'text'
+          dataType: 'json'
 
 
         }).done(function(data) {
-            if (data == 0) {
+            if (data.error == 0) {
 
               window.location.href="exito.php";
 
 
             } else {
-                alert("Hubo un error con su cuestionario.\n\n");
+                alert("Hubo un error con su cuestionario.\n\n"+(data.message));
 
-                if (data.message.indexOf('Incorrect security code') >= 0) {
-                    jQuery('#captcha_code').val('');
-                }
-                reloadCaptcha();
+              jQuery('#captcha_code').val('');
 
-                if(data==3){
-                  alert("Archivo muy grande");
-                }
+              reloadCaptcha();
+
+
+
 
             }   // tell jQuery not to set contentType
           })
           .fail(function(data) { alert (JSON.stringify(data)); })
-          .always(function() { alert("complete"); });
 
 
         return false;

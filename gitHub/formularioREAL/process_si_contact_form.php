@@ -33,7 +33,10 @@ function process_si_contact_form()
             require_once dirname(__FILE__) . '/securimage/securimage.php';
             $securimage = new Securimage();
             if ($securimage->check($captcha) == false) {
-                $errors['captcha_error'] = 'Codigo incorrecto';
+
+                $return = array('error' => 404, 'message' => 'Codigo incorrecto');
+                die(json_encode($return));
+
             }
         }
 
@@ -122,7 +125,7 @@ function process_si_contact_form()
 
 
 
-                    $target_dir = "uploads/";
+                    $target_dir = "uploads"."/";
                     $nombre_archivo = $_FILES['fileToUpload']['name'];
 
                     $target_file = $target_dir . basename($nombre_archivo);
@@ -140,6 +143,8 @@ function process_si_contact_form()
                     $trfecha= str_ireplace($correccion,"",(trim($fecha)));
 
                     $nombre_archivo=$trapellidos.$trnombre.$rutstr.$trfecha.".".$extension;
+                    $correccion=array("-","/",":"," ","'\'");
+                    $nombre_archivo= str_ireplace($correccion,"",(trim($nombre_archivo)));
                     $target_file =$target_dir.$nombre_archivo;
 
                     if ($region==="") {
@@ -159,12 +164,15 @@ function process_si_contact_form()
 
 
                     // Check file size
-                    if ($_FILES["fileToUpload"]["size"] > 500000) {
+                    if ($_FILES["fileToUpload"]["size"] > 2000000) {
                       $return = array('error' => 3, 'message' => 'Archivo muy Grande');
                         $uploadOk = 0;
-                        die(3);
+                      //  $return=3;
+                        die(json_encode($return));
 
                     }
+
+
                     // Allow certain file formats
                     if($imageFileType != "pdf") {
                      $return = array('error' => 4, 'message' => 'Solo se admiten archivos pdf');
@@ -253,13 +261,19 @@ try{
 
                                             if (mysqli_affected_rows($conn)>0){
                                                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                                                  $return = array('error' => 0, 'message' => 'OK');
+                                                   $return = array('error' => 0, 'message' => "OK");
+
+                                                  //$return = array('error' => 0, 'message' => 'OK');
+                                                  die(json_encode($return));
+
 
 
 
                                       }
 
-                                        else   $return = array('error' => 1, 'message' => $target_file);
+                                        else     $return = array('error' => 3, 'message' => 'Archivo muy Grande');
+                                        die(json_encode($return));
+
 
 
 
@@ -277,6 +291,8 @@ try{
 
 
                     }
+
+
 
 
 
