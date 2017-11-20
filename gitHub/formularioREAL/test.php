@@ -51,7 +51,7 @@ $mail = new PHPMailer(true);                              // Passing `true` enab
     $mail->Username = 'doc@atmsa.cl';                 // SMTP username
     $mail->Password = 'Aiai9884';                           // SMTP password
     $mail->SMTPSecure = 'true';                            // Enable TLS encryption, `ssl` also accepted
-    $mail->Port = 587;                                    // TCP port to connect to
+    $mail->Port = 25;                                    // TCP port to connect to
 
 
     //Recipients
