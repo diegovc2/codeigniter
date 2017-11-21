@@ -3,7 +3,7 @@
 
   if(($_SESSION['admin'])==1){
     if($_GET['signup']==='success'){
-      
+
     }
 
  ?>
@@ -18,6 +18,8 @@
            <input type="text" name="email" placeholder="E-mail">
            <input type="text" name="uid" placeholder="Usuario">
                <input type="password" name="pwd" placeholder="Password">
+               <input type="checkbox" name="usuario" >Permisos de Eliminación</button>
+
                  <button type="submit" name="submit" >Registrar</button>
      </form>
    </div>

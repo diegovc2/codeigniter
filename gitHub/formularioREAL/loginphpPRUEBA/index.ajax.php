@@ -4,7 +4,7 @@
 
 <section class="main-container">
   <div class="main-wrapper">
-    <h2>Home</h2>
+    <h2>Sistema de revisión de postulaciones ATM </h2>
   </div>
 
   <?php
@@ -34,9 +34,7 @@ if (isset($mensaje)){
 
     ?>
 
-    <h2>Bienvenido ADMIN
-    <?php echo $_SESSION['u_first'];
-    ?>
+    <h2>Bienvenido Administrador
   </h2>
 
     <br>
@@ -49,7 +47,7 @@ if (isset($mensaje)){
   }
   else{
 
-    echo 'HOLA USUARIO';
+    echo 'Bienvenido Usuario';
 
   }
   }

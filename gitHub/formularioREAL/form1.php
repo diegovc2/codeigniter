@@ -411,7 +411,7 @@
 <div id="añoegreso" class="row scale-transition">
   <div class="input-field col s12">
 
-    <div class="input-field col s6">
+    <div class="input-field col s12">
       <label class="active">Años de Experiencia</label>
 
     <select   name="añoegreso">
