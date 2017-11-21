@@ -113,7 +113,7 @@
 
 
 <div class="row">
-    <div class="input-field col s6">
+    <div class="input-field col s12 l6">
       <label class="active">Región</label>
 
     <select  id="regiones" name="regiones">
@@ -122,7 +122,7 @@
     </select>
   </div>
 
-      <div class="input-field col s6 ">
+      <div class="input-field col s12 l6 ">
         <label class="active">Comuna</label>
 
       <select  id="comunas" name="comunas"></select>
@@ -146,11 +146,11 @@
 <br>
 <div class="row">
 
-<div class="input-field col s6">
+<div class="input-field col s12 l6">
   <label>Teléfono Principal (Fijo o Móvil)</label>
   <br>
   <br>
-<div class="input-field col s2">
+<div class="input-field col s6">
 
   <input
  type="tel" id="codigo" name="codigo" placeholder="+569" pattern="[\+][0-9]{3}"  required  maxlength="4">
@@ -158,7 +158,7 @@
 
 </div>
 
-<div class="input-field col s4 ">
+<div class="input-field col s6 ">
       <input id="telefono" data-tooltip="8 Dígitos" class="tooltipped" title="Sólo Números y un m�nimo de 8 caracteres" type="tel" name="telefono" placeholder="1111111" pattern="[0-9]{8}"  required  maxlength="8"/>
       <label class="active">Teléfono</label>
 
@@ -168,11 +168,11 @@
 
 <br>
 
-<div class="input-field col s6">
+<div class="input-field col s12 l6">
 <label>Teléfono Opcional</label>
 <br>
 <br>
-<div class="input-field col s2">
+<div class="input-field col s6">
 
   <input
  type="tel" id="codigo2" name="codigo2" placeholder="+569" pattern="[\+][0-9]{3}"   maxlength="4">
@@ -180,7 +180,7 @@
 
 </div>
 
-<div class="input-field col s4 ">
+<div class="input-field col s6 ">
 
       <input id="telefono2" data-tooltip="8 Dígitos" class="tooltipped" title="Sólo Números y un mínimo de 8 caracteres" type="tel" name="telefono2" placeholder="1111111" pattern="[0-9]{8}"    maxlength="8"/>
       <label class="active">Teléfono</label>
@@ -463,13 +463,25 @@
 
 
 <br></br>
-<div class="row">
-  <button class="btn waves-effect waves-light #e65100 orange darken-4" name="action">
+<div class="row center-align">
+
+<div id="submit" class="row scale-transition">
+  <button id="btnsubmit" class="btn-large waves-effect waves-light #e65100 orange darken-4" name="action">
       <input type="submit"  name="submit"/>
       <i class="material-icons right">send</i>
     </button>
 
   </div>
+  <div id="barra" class="row scale-transition scale-out">
+
+  <div  class="progress">
+    <div class="indeterminate"></div>
+   </div>
+
+ </div>
+
+</div>
+
 
 
 
@@ -600,6 +612,26 @@
 
 }
 });
+
+
+
+
+  });
+
+  $(function(){
+
+    $('#contact_form').submit(function(){
+      $('#submit').removeClass('scale-in').addClass('scale-out');
+      $('#submit').prop('disabled', true);
+      $('#barra').removeClass('scale-out').addClass('scale-in');
+
+
+
+
+
+
+
+    });
 
 
 
