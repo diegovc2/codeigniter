@@ -6,7 +6,7 @@
   <div class="main-wrapper">
     <h2>Sistema de revisión de postulaciones ATM </h2>
   </div>
-
+ <form method="post" action="/codeigniter/index.php/main/subidas">
   <?php
   if (isset($_GET['login'])){
 
@@ -25,6 +25,7 @@
 }
 
 
+
 if (isset($mensaje)){
     echo ("<script language='javascript'>alert('$mensaje');</script>");
 }
@@ -32,14 +33,18 @@ if (isset($mensaje)){
   if(isset($_SESSION['admin'])){
     if($_SESSION['admin']==1){
 
+
+
     ?>
+
+      <input type="hidden" name="admin" value="1">
 
     <h2>Bienvenido Administrador
   </h2>
 
     <br>
 
-    <button class="menu" onclick="window.location.href='/codeigniter/index.php/main/subidas'">POSTULACIONES</button>
+
     <br>
         <button class="menu" onclick="window.location.href='listusr.php'">USUARIOS</button>
 
@@ -47,18 +52,38 @@ if (isset($mensaje)){
   }
   else{
 
-    echo 'Bienvenido Usuario';
+    if($_SESSION['admin']==0){
+
+    echo '<h2>Bienvenido Usuario</h2>';
+
+    ?>
+    <input type="hidden" name="admin" value="0">
+
+
+
+    <?php
+  }
 
   }
-  }
+
 
 
 
 
    ?>
+
+
+      <button class="signup-form button menu" type="submit" >POSTULACIONES</button>
+
+
+   </form>
+
+<!--     <button class="menu" onclick="window.location.href='/codeigniter/index.php/main/subidas'">POSTULACIONES</button>
+-->
 </section>
 
 
 <?php
+}
   include_once "footer.php";
  ?>

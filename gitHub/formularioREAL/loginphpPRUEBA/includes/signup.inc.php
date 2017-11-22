@@ -12,6 +12,7 @@
 
                 $uid=mysqli_real_escape_string($conn,$_POST['uid']);
                 $pwd=mysqli_real_escape_string($conn,$_POST['pwd']);
+                $admin=mysqli_real_escape_string($conn,$_POST['admin']);
 
 
                 //Error Handlers
@@ -48,7 +49,16 @@
                           //Hashing the pass
                           $hashedPwd=password_hash($pwd,PASSWORD_DEFAULT);
                           //Insert user in database
-                          $sql="insert into users (first_name,last_name,email,password,user_uid) values ('$first','$last','$email','$hashedPwd','$uid');";
+
+                          if($admin==='on'){
+                          $sql="insert into users (first_name,last_name,email,password,user_uid,admin) values ('$first','$last','$email','$hashedPwd','$uid',1);";
+                        }
+                          else{
+
+                              $sql="insert into users (first_name,last_name,email,password,user_uid,admin) values ('$first','$last','$email','$hashedPwd','$uid',0);";
+
+                          }
+
 
                           $result=mysqli_query($conn,$sql);
                           echo $result;

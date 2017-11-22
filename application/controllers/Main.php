@@ -40,13 +40,33 @@ $crud->display_as('areaesp','Área de Especialidad');
 $crud->display_as('areainteres','Reseña Laboral');
 
 $crud->display_as('fecha','Fecha de Postulación');
+$crud->order_by('fecha','desc');
 
 $crud->unset_read();
 $crud->unset_add();
 $crud->unset_edit();
 $jsfile = 'assets/grocery_crud/js/refresh.js';
 $crud->set_js($jsfile);
+
+if(isset($_POST['admin'])){
+
+  if($_POST['admin']==1){
+
+  }
+  else{
+    $crud->unset_delete();
+  }
+
+}
+else{
+
+  $_GET['error']='no';
+  header("/codeigniter/gitHub/formularioREAL/loginphpPRUEBA/index.ajax.php");
+
+
+}
 $output = $crud->render();
+
 $this->load->helper('file');
 
 $this->_example_output($output);

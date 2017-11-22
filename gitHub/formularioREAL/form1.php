@@ -513,6 +513,18 @@
    element2.style.display='none';
 }
 
+function closeLoading(){
+jQuery(document).ready(function($) {
+    $('#barra').removeClass('scale-in').addClass('scale-out');
+      $('#barra').prop('enabled', false);
+  $('#submit').removeClass('scale-out').addClass('scale-in');
+});
+
+return false;
+
+
+}
+
     function processForm()
     {
 
@@ -541,6 +553,8 @@
 
               reloadCaptcha();
 
+
+              closeLoading();
 
 
 
@@ -666,7 +680,11 @@
 
   });
 
+
+
 })(jQuery);
+
+
 
 </script>
 
