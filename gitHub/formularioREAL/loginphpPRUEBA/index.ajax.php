@@ -18,7 +18,7 @@
     $mensaje= 'usuario o contraseña no existen';
   }
   if($_GET['login']==='fuerza'){
-    $mensaje= 'No se meta a la fuerza porfavor';
+    $mensaje= 'Inicio de Sesión Requerido';
   }
 
 

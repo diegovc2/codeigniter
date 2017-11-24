@@ -64,11 +64,14 @@
 <div  class="col offset-s2 valign">
 <div class="card-panel yellow">
 
-<p class="caption">
-  Bienvenido a la página de postulación.
-  Aca podras dejar tu Currículum. Una vez enviado quedará en nuestra
-  base de datos. Si envia CV por segunda vez se editarán los datos iniciales
+<span class="card-title">
+¡Gracias por visitar nuestra página! </span>
+<p>A continuación, podrás agregar tus datos curriculares para así añadirlos automáticamente a nuestra base de datos.</p>
+<p>Al final del cuestionario, deberás adjuntar tu CV en formato PDF.</p>
+<p>Te pedimos rellenar la información de la forma más fidedigna posible, de tal manera que nuestra búsqueda resulte eficiente. El envío de datos incorrectos puede causar que no tomemos en cuenta tu postulación.</p>
+
 </p>
+
 
 
 </div>
@@ -388,7 +391,7 @@
 
     <div class="input-field col s12 ">
       <i class="material-icons prefix">mode_edit</i>
-    <textarea data-length="400" placeholder="Ej: Predicción de encuentro de Minerales" class="tooltipped materialize-textarea " name="areaesp" data-tooltip="Describa Aquí" maxlength="400"></textarea>
+    <textarea data-length="400" placeholder="Ej: Más de 3 años en estudios de Suelos" class="tooltipped materialize-textarea " name="areaesp" data-tooltip="Ingrese su especialidad complementándola con sus años de experiencia en el área" maxlength="400"></textarea>
     </div>
 </div>
 
