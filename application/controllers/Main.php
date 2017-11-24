@@ -79,12 +79,29 @@ function _example_output($output = null)
 $this->load->view('our_template.php',$output);
 }
 
+/*
 function just_a_test($primary_key , $row)
 {
 
   return "../../gitHub/formularioREAL/uploads/".$row->link;
 
 }
+*/
+
+
+function just_a_test($primary_key, $row)
+{
+    return "javascript:openBlank('" . base_url('gitHub/formularioREAL/uploads/')  . $row->link . "')";
+}
 
 
 }
+?>
+
+
+<script>
+function openBlank(url)
+{
+    window.open(url);
+}
+</script>

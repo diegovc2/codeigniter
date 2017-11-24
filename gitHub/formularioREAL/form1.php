@@ -84,11 +84,26 @@
       <form method="post" action="" id="contact_form" onsubmit="return processForm()" enctype="multipart/form-data">
         <input type="hidden" name="do" value="contact" />
 
-        <p>
+
+<p>
+  <div>
+  <input type="radio" name="practica" id="practicante" value="Practicante">
+  <label for="practicante">Solicitud de Práctica</label>
+
+  <input type="radio" name="practica"  id="postulante" value="Postulante">
+  <label for="postulante">Solicitud de Trabajo</label>
+
+  <input type="radio" name="practica"  id="miembro" value="Miembro">
+  <label for="miembro">Miembro Actual</label>
+
+</div>
+</p>
+
+      <!--  <p>
       <input type="checkbox" id="practica" name="practica" />
       <label for="practica">Solicitud de Práctica</label>
     </p>
-
+-->
 
         <div  class="input-field col s12">
     <input type="text" name="name" id="name"  required>
@@ -606,27 +621,35 @@ return false;
 
 
   $(function() {
-    $('#practica').change(function() {
-      if(this.checked){
+    $('input:radio[name="practica"]').change(function() {
+
+      if(this.checked && this.value == 'Practicante'){
   $('#cursos').removeClass('scale-in').addClass('scale-out');
   $('#lbltitulos').html("Carrera");
   $('#especialidad').removeClass('scale-in').addClass('scale-out');
   $('#añoegreso').removeClass('scale-in').addClass('scale-out');
-  $("#cursos").toggle();
-  $("#especialidad").toggle();
-  $("#añañoegreso").toggle();
+  $('#cursos').hide();
+  $('#especialidad').hide();
+  $('#añoegreso').hide();
+  $('#cursos').prop('disabled', true);
+  $('#especialidad').prop('disabled', true);
+  $('#añoegreso').prop('disabled', true);
+
+
 
 
 }else{
+  $('#cursos').show();
+  $('#especialidad').show();
+  $('#añoegreso').show();
   $('#cursos').removeClass('scale-out').addClass('scale-in');
   $('#titulos').removeClass('scale-out').addClass('scale-in');
   $('#especialidad').removeClass('scale-out').addClass('scale-in');
   $('#añoegreso').removeClass('scale-out').addClass('scale-in');
   $('#lbltitulos').html("Títulos");
-  $("#cursos").toggle();
-  $("#especialidad").toggle();
-  $("#añañoegreso").toggle();
-
+  $('#cursos').prop('enabled', true);
+  $('#especialidad').prop('enabled', true);
+  $('#añoegreso').prop('enabled', true);
 }
 });
 
