@@ -33,11 +33,14 @@ $crud->set_language("spanish");
 
 $crud->set_subject('Postulaciones');
 $crud->set_table('postulaciones');
-$crud->columns('practica','nombre','apellidos','rut','region','comuna','direccion','telefono','telefono2','email','universidad','añoegreso','educacion_superior','titulos','cursos','areaesp','areainteres','fecha');
+$crud->columns('practica','nombre','apellidos','rut','region','comuna','direccion','telefono','telefono2','email','universidad','añoegreso','educacion_superior','titulos','cursos','areaesp','areainteres','fecha','ex');
 $crud->add_action('Curriculum', '', '','ui-icon-image',array($this,'just_a_test'));
+$crud->add_action('Dar de Baja', '', '','ui-icon-alert',array($this,'dar_baja'));
+
 $crud->display_as('añoegreso','Años de Experiencia');
 $crud->display_as('areaesp','Área de Especialidad');
 $crud->display_as('areainteres','Reseña Laboral');
+$crud->display_as('ex','Ex-Miembro');
 
 $crud->display_as('fecha','Fecha de Postulación');
 $crud->order_by('fecha','desc');
@@ -93,6 +96,12 @@ function just_a_test($primary_key, $row)
 {
     return "javascript:openBlank('" . base_url('gitHub/formularioREAL/uploads/')  . $row->link . "')";
 }
+
+function dar_baja($primary_key, $row)
+{
+    
+}
+
 
 
 }

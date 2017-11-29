@@ -85,19 +85,6 @@
         <input type="hidden" name="do" value="contact" />
 
 
-<p>
-  <div>
-  <input type="radio" name="practica" id="practicante" value="Practicante">
-  <label for="practicante">Solicitud de Práctica</label>
-
-  <input type="radio" name="practica"  id="postulante" value="Postulante">
-  <label for="postulante">Solicitud de Trabajo</label>
-
-  <input type="radio" name="practica"  id="miembro" value="Miembro">
-  <label for="miembro">Miembro Actual</label>
-
-</div>
-</p>
 
       <!--  <p>
       <input type="checkbox" id="practica" name="practica" />
@@ -114,7 +101,7 @@
 <div class="row">
   <div class="input-field col s12">
 
-<input type="text" name="apellidos"  required>
+<input type="text" name="apellidos" id="apellidos"  required>
 <label>Apellidos</label>
 
 </div>
@@ -128,6 +115,20 @@
 
     <br></br>
 
+
+    <p>
+      <div>
+      <input type="radio" name="practica" id="practicante" value="Practicante">
+      <label for="practicante">Solicitud de Práctica</label>
+
+      <input type="radio" name="practica"  id="postulante" value="Postulante">
+      <label for="postulante">Solicitud de Trabajo</label>
+
+      <input type="radio" name="practica"  id="miembro" value="Miembro">
+      <label for="miembro">Miembro Actual</label>
+
+    </div>
+    </p>
 
 
 <div class="row">
@@ -152,7 +153,7 @@
 
   <div class="input-field col s12">
 
-  <input type="text" name="direccion" class="tooltipped" data-tooltip="Ingrese Calle y Número"  required>
+  <input type="text" id="direccion" name="direccion" class="tooltipped" data-tooltip="Ingrese Calle y Número"  required>
   <label>Domicilio</label>
 
 </div>
@@ -211,7 +212,7 @@
 
 <div class="input-field col s12">
     <label>Correo Electrónico</label>
-    <input name="email" type="email" class="tooltipped" data-tooltip="ejemplo@dominio.com"required>
+    <input id="email" name="email" type="email" class="tooltipped" data-tooltip="ejemplo@dominio.com"required>
 </div>
 
 </div>
@@ -387,7 +388,7 @@
 
 <div class="input-field col s12 ">
   <i class="material-icons prefix">mode_edit</i>
-<textarea  data-length="400" placeholder="Ej: Magister en Dibujo Técnico en la SEK 1999"  class="scale-transition tooltipped materialize-textarea " name="cursos" data-tooltip="Especificar año e institución" maxlength="400"></textarea>
+<textarea  data-length="400" placeholder="Ej: Magister en Dibujo Técnico en la SEK 1999"  class="scale-transition tooltipped materialize-textarea " id="media" name="cursos" data-tooltip="Especificar año e institución" maxlength="400"></textarea>
 </div>
 </div>
 
@@ -406,7 +407,7 @@
 
     <div class="input-field col s12 ">
       <i class="material-icons prefix">mode_edit</i>
-    <textarea data-length="400" placeholder="Ej: Más de 3 años en estudios de Suelos" class="tooltipped materialize-textarea " name="areaesp" data-tooltip="Ingrese su especialidad complementándola con sus años de experiencia en el área" maxlength="400"></textarea>
+    <textarea data-length="400" placeholder="Ej: Más de 3 años en estudios de Suelos" class="tooltipped materialize-textarea " name="areaesp" data-tooltip="Ingrese su especialidad complementándola con sus años de experiencia en el área" id="areaesp" maxlength="400"></textarea>
     </div>
 </div>
 
@@ -417,7 +418,7 @@
     <div class="input-field col s12 ">
       <i class="material-icons prefix">mode_edit</i>
     <textarea data-length="400"  class="tooltipped materialize-textarea "
-    placeholder="Ej: Trabajé durante 5 años en CODELCO, en el sector de Topografía de la mina de los Cobres" name="areainteres" data-tooltip="Describa Aquí" maxlength="400"></textarea>
+    placeholder="Ej: Trabajé durante 5 años en CODELCO, en el sector de Topografía de la mina de los Cobres" name="areainteres" id="" data-tooltip="Describa Aquí" maxlength="400"></textarea>
     </div>
 </div>
 
@@ -618,6 +619,86 @@ return false;
   });
   });
 
+  function rellena(){
+           var fd = new FormData(document.getElementById("contact_form"));
+
+           jQuery.ajax({
+             url: 'rellena.php',
+             type: "POST",
+             data: fd,
+             processData: false,  // tell jQuery not to process the data
+             contentType: false,
+             dataType: 'json'
+
+
+           }).done(function(data) {
+
+             $('#name').val(data[0].nombre);
+             $('#apellidos').val(data[0].apellidos);
+             $('#regiones').val(data[0].region);
+             $('#comuna').val(data[0].comunas);
+             $('#direccion').val(data[0].direccion);
+
+             var telefono= data[0].telefono;
+             var codigo=telefono.substr(0,4);
+             var fono=telefono.substr(4);
+             $('#telefono').val(fono);
+             $('#codigo').val(codigo);
+
+             var telefono2= data[0].telefono2;
+             var codigo2=telefono2.substr(0,4);
+             var fono2=telefono2.substr(4);
+             $('#telefono2').val(fono2);
+             $('#codigo2').val(codigo2);
+
+             $('#telefono2').val(data[0].telefono2);
+             $('#email').val(data[0].email);
+             $('#universidad').val(data[0].universidad);
+             $('#añoegreso').val(data[0].añoegreso);
+             $('#universidad').val(data[0].educacion_superior);
+             $('#titulos').val(data[0].titulos);
+             $('#media').val(data[0].cursos);
+             $('#areaesp').val(data[0].areaesp);
+             $('#areainteres').val(data[0].areainteres);
+             $('#añoegreso').val(data[0].añoegreso);
+
+              //alert (JSON.stringify(data[0].nombre));
+                // tell jQuery not to set contentType
+             })
+             .fail(function(data) { alert (JSON.stringify(data)); })
+
+
+           return false;
+
+         }
+
+  $('#miembro').click(function() {
+     if($('#miembro').is(':checked')) {
+       var rut=$('#rut').val();
+
+       if(rut==""){
+
+          alert('Ingrese RUT Porfavor');
+       }
+       else{
+          rellena();
+
+     }
+
+
+
+}
+});
+
+$('#rut').blur(function(){
+
+  if($('#miembro').is(':checked')) {
+
+      rellena();
+
+}
+
+});
 
 
   $(function() {
