@@ -80,10 +80,8 @@ $mail = new PHPMailer(true);                              // Passing `true` enab
 		            '<p>Practica:  '.$practica.'<p>'.
 		            '<p>Nombre:  '.$name.'<p>'.
                     '<p>Apellidos:  '.$apellidos.'<p>'.
-                    '<p>Rut:  '.$rut.'<p>'.
-                    '<p>Region:  '.$region.'<p>'.
-                    '<p>Comuna:  '.$comuna.'<p>'.
                     '<p>Direccion:  '.$direccion.'<p>'.
+                    '<p>Comuna:  '.$comuna.'<p>'.
                     '<p>Telefono:  '.$telefono.'<p>'.
                     '<p>Telefono Opcional:  '.$telefono2.'<p>'.
                     '<p>E-Mail:  '.$email.'<p>'.
