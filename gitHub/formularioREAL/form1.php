@@ -672,7 +672,7 @@ return false;
 
          }
 
-  $('#miembro').click(function() {
+/*  $('#miembro').click(function() {
      if($('#miembro').is(':checked')) {
        var rut=$('#rut').val();
 
@@ -688,15 +688,15 @@ return false;
 
 
 }
-});
+});*/
 
 $('#rut').blur(function(){
 
-  if($('#miembro').is(':checked')) {
+
 
       rellena();
 
-}
+
 
 });
 
