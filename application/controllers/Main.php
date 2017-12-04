@@ -43,6 +43,8 @@ $crud->display_as('areainteres','Reseña Laboral');
 $crud->display_as('ex','Ex-Miembro');
 
 $crud->display_as('fecha','Fecha de Postulación');
+$crud->display_as('practica','Tipo de Postulación');
+
 $crud->order_by('fecha','desc');
 
 $crud->unset_read();
