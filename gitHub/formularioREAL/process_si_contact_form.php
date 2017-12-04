@@ -85,14 +85,15 @@ function process_si_contact_form()
           $email=$_POST['email'];
           $media=$_POST['media'];
 
-          if($_POST['color']===""){
-          $universidad= $_POST['universidad'];
-        }
-          else  $universidad=$_POST['color'];
 
-            if($universidad===""){
+
+  if(!(isset($_POST['universidad'])))
+            {
               $return = array('error' => 9, 'message' => 'Debe Seleccionar una Universidad');
               die(json_encode($return));
+
+            }else{
+              $universidad= $_POST['universidad'];
 
             }
 
