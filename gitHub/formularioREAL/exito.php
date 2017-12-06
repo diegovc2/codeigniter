@@ -8,7 +8,7 @@
          <div class="card blue-grey darken-1 center-align">
            <div class="card-content white-text">
              <span class="card-title">Éxito</span>
-             <p>Hemos recibido tus datos correctamente. 
+             <p>Hemos recibido tus datos correctamente.
 De requerir un nuevo colaborador con tu perfil, te contactaremos a los datos indicados anteriormente.</p>
 <p> SI deseas actualizar tus datos, te pedimos volver a rellenar el formulario con tu RUT.</p>
 <p>
@@ -17,7 +17,6 @@ De requerir un nuevo colaborador con tu perfil, te contactaremos a los datos ind
 
            </div>
            <div class="card-action">
-             <a href="form1.php">Formulario</a>
              <a href="http://www.atmspa.cl">Home</a>
            </div>
          </div>

@@ -58,9 +58,9 @@ $mail = new PHPMailer(true);                              // Passing `true` enab
     $mail->setFrom('doc@atmsa.cl', 'Mailer');
     // Add a recipient
     $mail->addAddress('dveloso@atmsa.cl');               // Name is optional
-     $mail->addCC('vortiz@atmsa.cl');
+     /*$mail->addCC('vortiz@atmsa.cl');
      $mail->addCC('gespejo@atmsa.cl');
-     $mail->addCC('marancibia@atmsa.cl');
+     $mail->addCC('marancibia@atmsa.cl');*/
     // $mail->addBCC('bcc@example.com');
 
     //Attachments

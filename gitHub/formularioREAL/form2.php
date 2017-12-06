@@ -119,16 +119,14 @@
     <p>
       <div>
         <hidden value="Miembro" name="miembro" id="miembro"/>
-        <!--
+
       <input type="radio" name="practica" id="practicante" value="Practicante">
       <label for="practicante">Solicitud de Práctica</label>
 
       <input type="radio" name="practica"  id="postulante" value="Postulante">
       <label for="postulante">Solicitud de Trabajo</label>
 
-      <input type="radio" name="practica"  id="miembro" value="Miembro">
-      <label for="miembro">Miembro Actual</label>
--->
+
     </div>
     </p>
 
@@ -621,71 +619,7 @@ return false;
   });
   });
 
-  function rellena(){
-           var fd = new FormData(document.getElementById("contact_form"));
 
-           jQuery.ajax({
-             url: 'rellena.php',
-             type: "POST",
-             data: fd,
-             processData: false,  // tell jQuery not to process the data
-             contentType: false,
-             dataType: 'json'
-
-
-           }).done(function(data) {
-             
-             $('#name').val(data[0].nombre);
-             $('#apellidos').val(data[0].apellidos);
-             $('#regiones').val(data[0].region);
-             $('#comuna').val(data[0].comunas);
-             $('#direccion').val(data[0].direccion);
-
-             var telefono= data[0].telefono;
-             var codigo=telefono.substr(0,4);
-             var fono=telefono.substr(4);
-             $('#telefono').val(fono);
-             $('#codigo').val(codigo);
-
-             var telefono2= data[0].telefono2;
-             var codigo2=telefono2.substr(0,4);
-             var fono2=telefono2.substr(4);
-
-             $('#codigo2').val(codigo2);
-             $('#telefono2').val(fono2);
-
-
-             $('#email').val(data[0].email);
-             $('#universidad').val(data[0].universidad);
-             $('#añoegreso').val(data[0].añoegreso);
-             $('#universidad').val(data[0].educacion_superior);
-             $('#titulos').val(data[0].titulos);
-             $('#media').val(data[0].cursos);
-             $('#areaesp').val(data[0].areaesp);
-             $('#areainteres').val(data[0].areainteres);
-             $('#añoegreso').val(data[0].añoegreso);
-
-              //alert (JSON.stringify(data[0].nombre));
-                // tell jQuery not to set contentType
-             })
-             .fail(function(data) { alert (JSON.stringify(data)); })
-
-
-           return false;
-
-         }
-
-
-
-$('#rut').blur(function(){
-
-
-
-      rellena();
-
-
-
-});
 
 
   $(function() {

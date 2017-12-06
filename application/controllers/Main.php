@@ -35,7 +35,7 @@ $crud->set_subject('Postulaciones');
 $crud->set_table('postulaciones');
 $crud->columns('practica','nombre','apellidos','rut','region','comuna','direccion','telefono','telefono2','email','universidad','añoegreso','educacion_superior','titulos','cursos','areaesp','areainteres','fecha','ex');
 $crud->add_action('Curriculum', '', '','ui-icon-image',array($this,'just_a_test'));
-//$crud->add_action('Dar de Baja', '', '','ui-icon-alert',array($this,'dar_baja'));
+$crud->add_action('Cambiar a Postulante', '', '','ui-icon-alert',array($this,'postular'));
 
 $crud->display_as('añoegreso','Años de Experiencia');
 $crud->display_as('areaesp','Área de Especialidad');
@@ -84,14 +84,6 @@ function _example_output($output = null)
 $this->load->view('our_template.php',$output);
 }
 
-/*
-function just_a_test($primary_key , $row)
-{
-
-  return "../../gitHub/formularioREAL/uploads/".$row->link;
-
-}
-*/
 
 
 function just_a_test($primary_key, $row)
@@ -99,11 +91,26 @@ function just_a_test($primary_key, $row)
     return "javascript:openBlank('" . base_url('gitHub/formularioREAL/uploads/')  . $row->link . "')";
 }
 
-/*function dar_baja($primary_key, $row)
+function postular($primary_key, $row)
 {
 
+  $dbServername = "localhost";
+
+  $dbUsername = "root";
+  $dbPassword = "";
+  $dbName = "subidas";
+
+  $conn=mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+  $result=mysqli_query($conn,'SET NAMES utf8');
+  $consulta="UPDATE postulaciones
+              SET practica='Postulante'
+              WHERE rut='".$row->rut."'";
+  /*echo($consulta);
+  $rpta=mysqli_query($conn,$consulta);*/
+
+  
 }
-*/
+
 
 
 }
