@@ -69,15 +69,15 @@ $mail = new PHPMailer(true);                              // Passing `true` enab
 
     //Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    if(isset($practica)){
-      $mail->Subject = 'Postulación a Práctca de '.$name.' '.$fecha;
+    if($practica==="Practicante"){
+      $mail->Subject = 'Postulación a Práctica de '.$name.' '.$fecha;
 
     }
     else{
     $mail->Subject = 'Postulación de '.$name.' '.$fecha;
     }
     $mail->Body    =
-		            '<p>Practica:  '.$practica.'<p>'.
+		            '<p>Tipo de Postulación:  '.$practica.'<p>'.
 		            '<p>Nombre:  '.$name.'<p>'.
                     '<p>Apellidos:  '.$apellidos.'<p>'.
                     '<p>Direccion:  '.$direccion.'<p>'.
