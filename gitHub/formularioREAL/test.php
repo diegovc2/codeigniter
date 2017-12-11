@@ -80,17 +80,8 @@ $mail = new PHPMailer(true);                              // Passing `true` enab
 		            '<p>Tipo de Postulación:  '.$practica.'<p>'.
 		            '<p>Nombre:  '.$name.'<p>'.
                     '<p>Apellidos:  '.$apellidos.'<p>'.
-                    '<p>Direccion:  '.$direccion.'<p>'.
-                    '<p>Comuna:  '.$comuna.'<p>'.
-                    '<p>Telefono:  '.$telefono.'<p>'.
-                    '<p>Telefono Opcional:  '.$telefono2.'<p>'.
                     '<p>E-Mail:  '.$email.'<p>'.
-                    '<p>Universidad:  '.$universidad.'<p>'.
-                    '<p>Años de experiencia:  '.$añoegreso.'<p>'.
-                    '<p>Otros Estudios:  '.$media.'<p>'.
                     '<p>Titulos:  '.$titulos.'<p>'.
-                    '<p>Cursos:  '.$cursos.'<p>'.
-                    '<p>Reseña Laboral:  '.$areainteres.'<p>'.
                     '<p>Especialidades:  '.$areaesp.'<p>'
     ;
 
