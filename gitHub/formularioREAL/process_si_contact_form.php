@@ -82,6 +82,7 @@ function process_si_contact_form()
           $practica="";
           else $practica=$_POST['practica'];
 
+
           $email=$_POST['email'];
           $media=$_POST['media'];
 
@@ -251,6 +252,8 @@ function process_si_contact_form()
                                                 '$nombre_archivo',
                                                 '$fecha',
                                                 $numero[0])");
+												                          
+
 
 try{
                                               $result=mysqli_query($conn,$sql);
@@ -264,7 +267,6 @@ try{
                                                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                                                    $return = array('error' => 0, 'message' => "OK");
                                                   include("test.php");
-                                                  //$return = array('error' => 0, 'message' => 'OK');
                                                   die(json_encode($return));
 
 

@@ -118,7 +118,7 @@
 
     <p>
       <div>
-        <hidden value="Miembro" name="miembro" id="miembro"/>
+        <!--<input type="hidden" value="Miembro" name="practica" id="miembro"/>-->
         <!--
       <input type="radio" name="practica" id="practicante" value="Practicante">
       <label for="practicante">Solicitud de Práctica</label>
@@ -126,9 +126,10 @@
       <input type="radio" name="practica"  id="postulante" value="Postulante">
       <label for="postulante">Solicitud de Trabajo</label>
 
-      <input type="radio" name="practica"  id="miembro" value="Miembro">
+	  -->
+      <input checked type="radio" name="practica"  id="miembro" value="Miembro">
       <label for="miembro">Miembro Actual</label>
--->
+
     </div>
     </p>
 
