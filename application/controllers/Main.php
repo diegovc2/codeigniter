@@ -107,8 +107,9 @@ function postular($primary_key, $row)
               WHERE rut='".$row->rut."'";
   /*echo($consulta);
   $rpta=mysqli_query($conn,$consulta);*/
+  return base_url('gitHub/formularioREAL/modificar.php');
 
-  
+
 }
 
 
