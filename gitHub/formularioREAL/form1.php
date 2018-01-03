@@ -86,11 +86,7 @@
 
 
 
-      <!--  <p>
-      <input type="checkbox" id="practica" name="practica" />
-      <label for="practica">Solicitud de Práctica</label>
-    </p>
--->
+
 
         <div  class="input-field col s12">
     <input type="text" name="name" id="name"  required>
@@ -115,11 +111,17 @@
 
     <br></br>
 
+    <!--SELECCION DE TIPO DE POSTULACION:
+        POR DEFAULT ESTA YA CHEKEADO COMO TRABAJADOR
+        SI QUIEREN DEJARLO EN PRACTICA, POSTULANTE Y TRABAJADOR
+        DEBEN DESCOMENTAR LA ZONA DE ABAJO. TAMBIEN EN EL INPUT DE MIEMBRO ACTUAL
+        DEBEN SACAR LA OPCION CHECKED-->
 
     <p>
+
+
       <div>
-        <!--<input type="hidden" value="Miembro" name="practica" id="miembro"/>-->
-        <!--
+          <!--
       <input type="radio" name="practica" id="practicante" value="Practicante">
       <label for="practicante">Solicitud de Práctica</label>
 
@@ -635,7 +637,7 @@ return false;
 
 
            }).done(function(data) {
-             
+
              $('#name').val(data[0].nombre);
              $('#apellidos').val(data[0].apellidos);
              $('#regiones').val(data[0].region);

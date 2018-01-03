@@ -1,4 +1,11 @@
+
+
 <?php
+/* ESTA ES LA PAGINA QUE INGRESA LOS DATOS A LA BASE DE DATOS. TOMA LAS VARIABLES DE FORM1.PHP Y LAS SUBE A LA BASE.
+TAMBIEN INCLUYE EL ENVIADOR DE MAIL*/
+
+
+
 date_default_timezone_set("America/Santiago");
 
 
@@ -252,7 +259,7 @@ function process_si_contact_form()
                                                 '$nombre_archivo',
                                                 '$fecha',
                                                 $numero[0])");
-												                          
+
 
 
 try{

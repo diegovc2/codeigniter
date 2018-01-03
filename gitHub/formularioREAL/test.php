@@ -1,6 +1,9 @@
 <?php
-// Import PHPMailer classes into the global namespace
-// These must be at the top of your script, not inside a function
+
+/*ESTE ES EL ENVIADOR DE MAIL*/
+
+
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -39,35 +42,40 @@ require 'vendor/autoload.php';
 
 
 
-$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
-//try {
-    //Server settings
-    $mail->SMTPDebug = 0;                                 // Enable verbose debug output
+$mail = new PHPMailer(true);
+
+    $mail->SMTPDebug = 0;
     $mail->CharSet = 'UTF-8';
 
-    $mail->isSMTP();                                      // Set mailer to use SMTP
-    $mail->Host = '192.168.0.14';  // Specify main and backup SMTP servers
-    $mail->SMTPAuth = true;                               // Enable SMTP authentication
-    $mail->Username = 'doc@atmsa.cl';                 // SMTP username
-    $mail->Password = 'Aiai9884';                           // SMTP password
-    $mail->SMTPSecure = 'true';                            // Enable TLS encryption, `ssl` also accepted
-    $mail->Port = 25;                                    // TCP port to connect to
+    $mail->isSMTP();
+    $mail->Host = '192.168.0.14';
+    $mail->SMTPAuth = true;
+    $mail->Username = 'doc@atmsa.cl';
+    $mail->Password = 'Aiai9884';
+    $mail->SMTPSecure = 'true';
+    $mail->Port = 25;
 
-
-    //Recipients
+    //ESTE ES EL QUE  ENVÍA EL MAIL
     $mail->setFrom('doc@atmsa.cl', 'Mailer');
-    // Add a recipient
-    $mail->addAddress('dveloso@atmsa.cl');               // Name is optional
+    // ESTE ES EL QUE RECIBE EL MAIL
+    $mail->addAddress('dveloso@atmsa.cl');
+
+  // SI QUIEREN QUE AGREGUE COPIAS, DEBEN DESCOMENTAR ESTA ZONA
+
      /*$mail->addCC('vortiz@atmsa.cl');
      $mail->addCC('gespejo@atmsa.cl');
      $mail->addCC('marancibia@atmsa.cl');*/
     // $mail->addBCC('bcc@example.com');
 
+    //ESTA ES LA PARTE DE LOS ADJUNTOS. SI DESEAN AGREWGAR UN ARCHIVO ADJUNTO DEBEN DESCOMENTAR AQUÍ
+
     //Attachments
     //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
     //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 
-    //Content
+    //CUERPO DEL Mail
+
+    
     $mail->isHTML(true);                                  // Set email format to HTML
     if($practica==="Practicante"){
       $mail->Subject = 'Postulación a Práctica de '.$name.' '.$fecha;
