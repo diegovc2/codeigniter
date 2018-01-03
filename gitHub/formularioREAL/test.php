@@ -64,7 +64,9 @@ $mail = new PHPMailer(true);
 
      /*$mail->addCC('vortiz@atmsa.cl');
      $mail->addCC('gespejo@atmsa.cl');
-     $mail->addCC('marancibia@atmsa.cl');*/
+     */$mail->addCC('marancibia@atmsa.cl');
+     $mail->addCC('aarancibia@atmsa.cl');
+
     // $mail->addBCC('bcc@example.com');
 
     //ESTA ES LA PARTE DE LOS ADJUNTOS. SI DESEAN AGREWGAR UN ARCHIVO ADJUNTO DEBEN DESCOMENTAR AQUÍ
@@ -75,7 +77,7 @@ $mail = new PHPMailer(true);
 
     //CUERPO DEL Mail
 
-    
+
     $mail->isHTML(true);                                  // Set email format to HTML
     if($practica==="Practicante"){
       $mail->Subject = 'Postulación a Práctica de '.$name.' '.$fecha;

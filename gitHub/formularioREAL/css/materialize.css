@@ -9421,6 +9421,7 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   }
 
 #captcha_code{
+  font-size: 3rem;
   color:white;
   border-bottom: 3px solid white;
 
