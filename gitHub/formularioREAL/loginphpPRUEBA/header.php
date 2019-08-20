@@ -82,6 +82,17 @@ session_start();
         content:'';
         content:none;
     }
+    #check{
+
+      width: 20%;
+
+    }
+
+    #frase{
+
+      font-size: 26px;
+
+    }
 
     a {
         margin:0;

@@ -64,11 +64,14 @@
 <div  class="col offset-s2 valign">
 <div class="card-panel yellow">
 
-<p class="caption">
-  Bienvenido a la página de postulación.
-  Aca podras dejar tu Currículum. Una vez enviado quedará en nuestra
-  base de datos. Si envia CV por segunda vez se editarán los datos iniciales
+<span class="card-title">
+¡Gracias por visitar nuestra página! </span>
+<p>A continuación, podrás agregar tus datos curriculares para así añadirlos automáticamente a nuestra base de datos.</p>
+<p>Al final del cuestionario, deberás adjuntar tu CV en formato PDF.</p>
+<p>Te pedimos rellenar la información de la forma más fidedigna posible, de tal manera que nuestra búsqueda resulte eficiente. El envío de datos incorrectos puede causar que no tomemos en cuenta tu postulación.</p>
+
 </p>
+
 
 
 </div>
@@ -82,17 +85,19 @@
         <input type="hidden" name="do" value="contact" />
 
 
-        <div class="input-field col s12">
 
-    <input type="text" name="name"  required>
-    <label>Nombre</label>
+
+
+        <div  class="input-field col s12">
+    <input type="text" name="name" id="name"  required>
+    <label id="lblnombre" >Nombre</label>
 
   </div>
 
 <div class="row">
   <div class="input-field col s12">
 
-<input type="text" name="apellidos"  required>
+<input type="text" name="apellidos" id="apellidos"  required>
 <label>Apellidos</label>
 
 </div>
@@ -100,17 +105,40 @@
 
     <div class="input-field col s12">
  <input required type="text" id="rut" name="rut" class="tooltipped" data-tooltip="Minimo 7 Dígitos">
- <label>Rut</label>
+ <label>RUT</label>
 </div>
 
 
     <br></br>
 
+    <!--SELECCION DE TIPO DE POSTULACION:
+        POR DEFAULT ESTA YA CHEKEADO COMO TRABAJADOR
+        SI QUIEREN DEJARLO EN PRACTICA, POSTULANTE Y TRABAJADOR
+        DEBEN DESCOMENTAR LA ZONA DE ABAJO. TAMBIEN EN EL INPUT DE MIEMBRO ACTUAL
+        DEBEN SACAR LA OPCION CHECKED-->
+
+    <p>
+
+
+      <div>
+          <!--
+      <input type="radio" name="practica" id="practicante" value="Practicante">
+      <label for="practicante">Solicitud de Práctica</label>
+
+      <input type="radio" name="practica"  id="postulante" value="Postulante">
+      <label for="postulante">Solicitud de Trabajo</label>
+
+	  -->
+      <input checked type="radio" name="practica"  id="miembro" value="Miembro">
+      <label for="miembro">Miembro Actual</label>
+
+    </div>
+    </p>
 
 
 <div class="row">
-    <div class="input-field col s6">
-      <label class="active">Region</label>
+    <div class="input-field col s12 l6">
+      <label class="active">Región</label>
 
     <select  id="regiones" name="regiones">
       <option selected disabled value=""></option>
@@ -118,7 +146,7 @@
     </select>
   </div>
 
-      <div class="input-field col s6 ">
+      <div class="input-field col s12 l6 ">
         <label class="active">Comuna</label>
 
       <select  id="comunas" name="comunas"></select>
@@ -130,15 +158,77 @@
 
   <div class="input-field col s12">
 
-  <input type="text" name="direccion" class="tooltipped" data-tooltip="Ingrese Calle y Número"  required>
-  <label>Direccion</label>
+  <input type="text" id="direccion" name="direccion" class="tooltipped" data-tooltip="Ingrese Calle y Número"  required>
+  <label>Domicilio</label>
+
+</div>
+
+
+
+
+
+<br>
+<div class="row">
+
+<div class="input-field col s12 l6">
+  <label>Teléfono Principal (Fijo o Móvil)</label>
+  <br>
+  <br>
+<div class="input-field col s6">
+
+  <input
+ type="tel" id="codigo" name="codigo" placeholder="+569" pattern="[\+][0-9]{3}"  required  maxlength="4">
+ <label class="active">Código</label>
+
+</div>
+
+<div class="input-field col s6 ">
+      <input id="telefono" data-tooltip="8 Dígitos" class="tooltipped" title="Sólo Números y un m�nimo de 8 caracteres" type="tel" name="telefono" placeholder="1111111" pattern="[0-9]{8}"  required  maxlength="8"/>
+      <label class="active">Teléfono</label>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="input-field col s12 l6">
+<label>Teléfono Opcional</label>
+<br>
+<br>
+<div class="input-field col s6">
+
+  <input
+ type="tel" id="codigo2" name="codigo2" placeholder="+569" pattern="[\+][0-9]{3}"   maxlength="4">
+ <label class="active">Código</label>
+
+</div>
+
+<div class="input-field col s6 ">
+
+      <input id="telefono2" data-tooltip="8 Dígitos" class="tooltipped" title="Sólo Números y un mínimo de 8 caracteres" type="tel" name="telefono2" placeholder="1111111" pattern="[0-9]{8}"    maxlength="8"/>
+      <label class="active">Teléfono</label>
+
+</div>
 
 </div>
 
 <div class="row">
-  <label>Universidad</label>
 
-<select name="universidad" onchange='checkOtro(this.value);' id="universidad" class="form-control">
+<div class="input-field col s12">
+    <label>Correo Electrónico</label>
+    <input id="email" name="email" type="email" class="tooltipped" data-tooltip="ejemplo@dominio.com"required>
+</div>
+
+</div>
+
+<h2>DATOS ACADÉMICOS</h2>
+
+
+<div class="row">
+  <label>Instituto de Educación Superior</label>
+
+<select name="universidad"  onchange='checkOtro(this.value);' id="universidad" class="form-control">
 
 
   <option selected value=""></option>
@@ -285,141 +375,137 @@
 <input type="text" name="color" id="color" style='display:none;'/>
 </div>
 
-<div class="row">
-  <div class="input-field col s12">
-
-  <input type="text" id="añoegreso" name="añoegreso" class="tooltipped" data-tooltip="Año en el que sacó su Titulo"  required>
-  <label>Año de Egreso</label>
-</div>
-</div>
-
-<br>
-<div class="row">
-
-  <label>Telefono Principal</label>
-  <br>
-<div class="input-field col s1">
-
-  <input
- type="tel" id="codigo" name="codigo" placeholder="+569" pattern="[\+][0-9]{3}"  required  maxlength="4">
- <label class="active">Codigo</label>
-
-</div>
-
-<div class="input-field col s4 ">
-      <input id="telefono" data-tooltip="8 Dígitos" class="tooltipped" title="Sólo Números y un m�nimo de 8 caracteres" type="tel" name="telefono" placeholder="1111111" pattern="[0-9]{8}"  required  maxlength="8"/>
-      <label class="active">Telefono</label>
-
-</div>
-
-</div>
-<br>
-<div class="row">
-
-<label>Telefono Opcional</label>
-<br>
-<div class="input-field col s1">
-
-  <input
- type="tel" id="codigo2" name="codigo2" placeholder="+569" pattern="[\+][0-9]{3}"   maxlength="4">
- <label class="active">Codigo</label>
-
-</div>
-
-<div class="input-field col s4 ">
-
-      <input id="telefono2" data-tooltip="8 Dígitos" class="tooltipped" title="Sólo Números y un mínimo de 8 caracteres" type="tel" name="telefono2" placeholder="1111111" pattern="[0-9]{8}"    maxlength="8"/>
-      <label class="active">Telefono</label>
-
-</div>
-
-</div>
-
-<div class="row">
-
-<div class="input-field col s12">
-    <label>Email</label>
-    <input name="email" type="email" class="tooltipped" data-tooltip="ejemplo@dominio.com"required>
-</div>
-
-</div>
-
-<h2>DATOS ACADEMICOS</h2>
 
 
+<div id="titulos" class="row scale-transition">
+  <label id="lbltitulos" class="scale-transition">Títulos</label>
 
-<label>Enseñanza Superior</label>
-
-<div class="row">
-<div class="input-field col s6 ">
+<div class="input-field col s12 ">
   <i class="material-icons prefix">mode_edit</i>
-<textarea data-length="400" data-tooltip="Ingresar nombre de universidad/instituto y su año de egreso"  class="tooltipped materialize-textarea " name="media"  maxlength="400"></textarea>
+<textarea data-length="400"  placeholder="Ej:Agronomía Universidad del Desarrollo 2014"  class="tooltipped materialize-textarea scale-transition " name="titulos" data-tooltip="Especificar por favor grado académico" maxlength="400"></textarea>
 </div>
 </div>
 
 
-<label>Titulos</label>
+<div id="cursos" class="row scale-transition">
 
-<div class="row">
-<div class="input-field col s6 ">
+  <label class="scale-transition" id="lblcursos">Cursos y Diplomados</label>
+
+<div class="input-field col s12 ">
   <i class="material-icons prefix">mode_edit</i>
-<textarea data-length="400"  class="tooltipped materialize-textarea " name="titulos" data-tooltip="Especificar por favor grado académico" maxlength="400"></textarea>
+<textarea  data-length="400" placeholder="Ej: Magister en Dibujo Técnico en la SEK 1999"  class="scale-transition tooltipped materialize-textarea " id="media" name="cursos" data-tooltip="Especificar año e institución" maxlength="400"></textarea>
 </div>
 </div>
 
-<label>Cursos y diplomados</label>
+<label>Otros Estudios</label>
 
 <div class="row">
-
-<div class="input-field col s6 ">
+<div class="input-field col s12 ">
   <i class="material-icons prefix">mode_edit</i>
-<textarea data-length="400"  class="tooltipped materialize-textarea " name="cursos" data-tooltip="Especificar año e institución" maxlength="400"></textarea>
+<textarea data-length="400" data-tooltip="Ingresar nombre de universidad/instituto y su año de egreso" placeholder="2009 Universidad Las Américas Agronomía"  class="tooltipped materialize-textarea " name="media"  maxlength="400"></textarea>
 </div>
 </div>
 
 
-<h2>INFORMACION ADICIONAL</h2>
+<div id="especialidad" class="row scale-transition">
+  <h2>Especialidades</h2>
 
-<div class="row">
-
-    <div class="input-field col s6 ">
+    <div class="input-field col s12 ">
       <i class="material-icons prefix">mode_edit</i>
-    <textarea data-length="400"  class="tooltipped materialize-textarea " name="message" data-tooltip="Describa Aquí" maxlength="200"></textarea>
+    <textarea data-length="400" placeholder="Ej: Más de 3 años en estudios de Suelos" class="tooltipped materialize-textarea " name="areaesp" data-tooltip="Ingrese su especialidad complementándola con sus años de experiencia en el área" id="areaesp" maxlength="400"></textarea>
+    </div>
+</div>
+
+<h2>Reseña Laboral</h2>
+
+<div class="row">
+
+    <div class="input-field col s12 ">
+      <i class="material-icons prefix">mode_edit</i>
+    <textarea data-length="400"  class="tooltipped materialize-textarea "
+    placeholder="Ej: Trabajé durante 5 años en CODELCO, en el sector de Topografía de la mina de los Cobres" name="areainteres" id="" data-tooltip="Describa Aquí" maxlength="400"></textarea>
     </div>
 </div>
 
 
-<label>Adjunte su CV (sólo archivos .pdf)</label>
+
+
+
+
+<div id="añoegreso" class="row scale-transition">
+  <div class="input-field col s12">
+
+    <div class="input-field col s12">
+      <label class="active">Años de Experiencia</label>
+
+    <select   name="añoegreso">
+      <option  value="0">Recien Egresado</option>
+      <option  value="1">1</option>
+      <option  value="2">2</option>
+      <option  value="3">3</option>
+      <option  value="4">4</option>
+      <option  value="5">5</option>
+      <option  value="6">6</option>
+      <option  value="7">7</option>
+      <option  value="8">8</option>
+      <option  value="9">9</option>
+      <option  value="10">10 o más</option>
+
+    </select>
+
+
+    </div>
+  </div>
+</div>
+
+<label>Adjunte su CV (sólo archivos .pdf menores a 2 MB)</label>
 <br>
 <br>
 <div class="file-field input-field">
+  <div class="subir">
    <div class="btn #e65100 orange darken-4">
      <span>Subir Archivo</span>
      <input type="file" name="fileToUpload" id="fileToUpload" required/>
    </div>
+ </div>
    <div class="file-path-wrapper">
      <input class="file-path validate"  name ="path" type="text">
    </div>
  </div>
 <br></br>
-    <label>Ingrese el codigo de seguridad</label>
 <br>
 <br>
 
 
   <p>
+     <div class="card-panel orange">
+       <span class="card-title white-text"><h5>INGRESE EL CODIGO DE SEGURIDAD</h5></span>
+
     <?php require_once 'securimage/securimage.php'; echo Securimage::getCaptchaHtml(array('input_name' => 'ct_captcha')); ?>
+  </div>
   </p>
 
 
 <br></br>
-<div class="row">
-  <button class="btn waves-effect waves-light #e65100 orange darken-4" name="action">
+<div class="row center-align">
+
+<div id="submit" class="row scale-transition">
+  <button id="btnsubmit" class="btn-large waves-effect waves-light #e65100 orange darken-4" name="action">
       <input type="submit"  name="submit"/>
       <i class="material-icons right">send</i>
     </button>
 
   </div>
+  <div id="barra" class="row scale-transition scale-out">
+
+  <div  class="progress">
+    <div class="indeterminate"></div>
+   </div>
+
+ </div>
+
+</div>
+
 
 
 
@@ -427,7 +513,11 @@
 
 
 <script type="text/javascript">
+
+
     $.noConflict();
+
+
 
     function reloadCaptcha()
     {
@@ -447,13 +537,24 @@
    element2.style.display='none';
 }
 
+function closeLoading(){
+jQuery(document).ready(function($) {
+    $('#barra').removeClass('scale-in').addClass('scale-out');
+      $('#barra').prop('enabled', false);
+  $('#submit').removeClass('scale-out').addClass('scale-in');
+});
+
+return false;
+
+
+}
+
     function processForm()
     {
 
 
 
         var fd = new FormData(document.getElementById("contact_form"));
-        fd.append("CustomField", "This is some extra data");
         jQuery.ajax({
           url: "form1.php",
           type: "POST",
@@ -462,20 +563,28 @@
           contentType: false,
           dataType: 'json'
 
+
         }).done(function(data) {
-            if (data.error === 0) {
+            if (data.error == 0) {
 
               window.location.href="exito.php";
-            } else {
-                alert("Hubo un error con su cuestionario.\n\n" + data.message);
 
-                if (data.message.indexOf('Incorrect security code') >= 0) {
-                    jQuery('#captcha_code').val('');
-                }
-                reloadCaptcha();
+
+            } else {
+                alert("Hubo un error con su cuestionario.\n\n"+(data.message));
+
+              jQuery('#captcha_code').val('');
+
+              reloadCaptcha();
+
+
+              closeLoading();
+
+
 
             }   // tell jQuery not to set contentType
-          });
+          })
+          .fail(function(data) { alert (JSON.stringify(data)); })
 
 
         return false;
@@ -515,9 +624,130 @@
   });
   });
 
+  function rellena(){
+           var fd = new FormData(document.getElementById("contact_form"));
+
+           jQuery.ajax({
+             url: 'rellena.php',
+             type: "POST",
+             data: fd,
+             processData: false,  // tell jQuery not to process the data
+             contentType: false,
+             dataType: 'json'
+
+
+           }).done(function(data) {
+
+             $('#name').val(data[0].nombre);
+             $('#apellidos').val(data[0].apellidos);
+             $('#regiones').val(data[0].region);
+             $('#comuna').val(data[0].comunas);
+             $('#direccion').val(data[0].direccion);
+
+             var telefono= data[0].telefono;
+             var codigo=telefono.substr(0,4);
+             var fono=telefono.substr(4);
+             $('#telefono').val(fono);
+             $('#codigo').val(codigo);
+
+             var telefono2= data[0].telefono2;
+             var codigo2=telefono2.substr(0,4);
+             var fono2=telefono2.substr(4);
+
+             $('#codigo2').val(codigo2);
+             $('#telefono2').val(fono2);
+
+
+             $('#email').val(data[0].email);
+             $('#universidad').val(data[0].universidad);
+             $('#añoegreso').val(data[0].añoegreso);
+             $('#universidad').val(data[0].educacion_superior);
+             $('#titulos').val(data[0].titulos);
+             $('#media').val(data[0].cursos);
+             $('#areaesp').val(data[0].areaesp);
+             $('#areainteres').val(data[0].areainteres);
+             $('#añoegreso').val(data[0].añoegreso);
+
+              //alert (JSON.stringify(data[0].nombre));
+                // tell jQuery not to set contentType
+             })
+             .fail(function(data) { alert (JSON.stringify(data)); })
+
+
+           return false;
+
+         }
 
 
 
+$('#rut').blur(function(){
+
+
+
+      rellena();
+
+
+
+});
+
+
+  $(function() {
+    $('input:radio[name="practica"]').change(function() {
+
+      if(this.checked && this.value == 'Practicante'){
+  $('#cursos').removeClass('scale-in').addClass('scale-out');
+  $('#lbltitulos').html("Carrera");
+  $('#especialidad').removeClass('scale-in').addClass('scale-out');
+  $('#añoegreso').removeClass('scale-in').addClass('scale-out');
+  $('#cursos').hide();
+  $('#especialidad').hide();
+  $('#añoegreso').hide();
+  $('#cursos').prop('disabled', true);
+  $('#especialidad').prop('disabled', true);
+  $('#añoegreso').prop('disabled', true);
+
+
+
+
+}else{
+  $('#cursos').show();
+  $('#especialidad').show();
+  $('#añoegreso').show();
+  $('#cursos').removeClass('scale-out').addClass('scale-in');
+  $('#titulos').removeClass('scale-out').addClass('scale-in');
+  $('#especialidad').removeClass('scale-out').addClass('scale-in');
+  $('#añoegreso').removeClass('scale-out').addClass('scale-in');
+  $('#lbltitulos').html("Títulos");
+  $('#cursos').prop('enabled', true);
+  $('#especialidad').prop('enabled', true);
+  $('#añoegreso').prop('enabled', true);
+}
+});
+
+
+
+
+  });
+
+  $(function(){
+
+    $('#contact_form').submit(function(){
+      $('#submit').removeClass('scale-in').addClass('scale-out');
+      $('#submit').prop('disabled', true);
+      $('#barra').removeClass('scale-out').addClass('scale-in');
+
+
+
+
+
+
+
+    });
+
+
+
+
+  });
 
 
 
@@ -547,7 +777,11 @@
 
   });
 
+
+
 })(jQuery);
+
+
 
 </script>
 

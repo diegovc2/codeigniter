@@ -1,9 +1,19 @@
+
+
 <?php
+/* ESTA ES LA PAGINA QUE INGRESA LOS DATOS A LA BASE DE DATOS. TOMA LAS VARIABLES DE FORM1.PHP Y LAS SUBE A LA BASE.
+TAMBIEN INCLUYE EL ENVIADOR DE MAIL*/
+
+
+
 date_default_timezone_set("America/Santiago");
 
 
 function process_si_contact_form()
 {
+  try{
+
+
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && @$_POST['do'] == 'contact') {
         // if the form has been submitted
@@ -30,7 +40,10 @@ function process_si_contact_form()
             require_once dirname(__FILE__) . '/securimage/securimage.php';
             $securimage = new Securimage();
             if ($securimage->check($captcha) == false) {
-                $errors['captcha_error'] = 'Codigo incorrecto';
+
+                $return = array('error' => 404, 'message' => 'Codigo incorrecto');
+                die(json_encode($return));
+
             }
         }
 
@@ -52,22 +65,43 @@ function process_si_contact_form()
           $codigo=$_POST['codigo'];
           $telefono=$_POST['telefono'];
           $telefonocomp=$codigo.$telefono;
-          $codigo2=$_POST['codigo2'];
-          $telefono2=$_POST['telefono2'];
-          $telefonocomp2=$codigo2.$telefono2;
+
+
+
+
           $añoegreso=$_POST['añoegreso'];
+
+          //<---OPCIONALES-->
+
+          if (isset($_POST['telefono2'])){
+          $telefono2=$_POST['telefono2'];
+          $codigo2=$_POST['codigo2'];
+
+          $telefonocomp2=$codigo2.$telefono2;
+        }else{
+            $telefono2="";
+            $codigo2="";
+              $telefonocomp2="";
+        }
+
+
+        if(!(isset($_POST['practica'])))
+          $practica="";
+          else $practica=$_POST['practica'];
+
 
           $email=$_POST['email'];
           $media=$_POST['media'];
 
-          if($_POST['color']===""){
-          $universidad= $_POST['universidad'];
-        }
-          else  $universidad=$_POST['color'];
 
-            if($universidad===""){
+
+  if(!(isset($_POST['universidad'])))
+            {
               $return = array('error' => 9, 'message' => 'Debe Seleccionar una Universidad');
               die(json_encode($return));
+
+            }else{
+              $universidad= $_POST['universidad'];
 
             }
 
@@ -87,19 +121,20 @@ function process_si_contact_form()
 
           $titulos=$_POST['titulos'];
           $cursos=$_POST['cursos'];
-                $message=$_POST['message'];
+                $areainteres=$_POST['areainteres'];
+                $areaesp=$_POST['areaesp'];
                 $fecha=$date = date("d/m/Y G:i");
                 $from='From:TangledDemo';
                 $to='diegoveloso34@hotmail.com';
                 $subject='Hello';
-                $body="From: $name\n E-Mail: $email\n Message:\n $message";
+                $body="From: $name\n E-Mail: $email\n Message";
 
 
 
 
 
 
-                    $target_dir = "uploads/";
+                    $target_dir = "uploads"."/";
                     $nombre_archivo = $_FILES['fileToUpload']['name'];
 
                     $target_file = $target_dir . basename($nombre_archivo);
@@ -110,14 +145,16 @@ function process_si_contact_form()
                     $extension= $partes['extension'];
 
 
-                    $correccion=array("-",".","/",":"," ");
+                    $correccion=array("-",".","/",":"," ","'\'");
                     $rutstr=str_replace($correccion,"",trim($rut));
                     $trapellidos=str_replace($correccion,"",trim($apellidos));
                     $trnombre=str_replace($correccion,"",trim($name));
                     $trfecha= str_ireplace($correccion,"",(trim($fecha)));
 
                     $nombre_archivo=$trapellidos.$trnombre.$rutstr.$trfecha.".".$extension;
-                    $target_file =$target_dir . basename($nombre_archivo);
+                    $correccion=array("-","/",":"," ","'\'");
+                    $nombre_archivo= str_ireplace($correccion,"",(trim($nombre_archivo)));
+                    $target_file =$target_dir.$nombre_archivo;
 
                     if ($region==="") {
                       $return = array('error' => 8, 'message' => 'Debe Seleccionar una Region');
@@ -136,12 +173,15 @@ function process_si_contact_form()
 
 
                     // Check file size
-                    if ($_FILES["fileToUpload"]["size"] > 500000) {
+                    if ($_FILES["fileToUpload"]["size"] > 2000000) {
                       $return = array('error' => 3, 'message' => 'Archivo muy Grande');
                         $uploadOk = 0;
+                      //  $return=3;
                         die(json_encode($return));
 
                     }
+
+
                     // Allow certain file formats
                     if($imageFileType != "pdf") {
                      $return = array('error' => 4, 'message' => 'Solo se admiten archivos pdf');
@@ -169,6 +209,7 @@ function process_si_contact_form()
 */
                       }
                     }
+                    else $numero[0]=0;
 
 
                     // Check if $uploadOk is set to 0 by an error
@@ -177,43 +218,84 @@ function process_si_contact_form()
                   } else {
 
 
-                                              $sql="REPLACE into postulaciones (nombre,apellidos,rut,region,comuna,direccion,telefono,telefono2,email,universidad,añoegreso,educacion_superior,titulos,cursos,comentarios,link,fecha,numero) values
-                                              ('$name','$apellidos','$rut','$region','$comuna','$direccion','$telefonocomp',$telefonocomp2,'$email','$universidad','$añoegreso','$media','$titulos','$cursos','$message','$nombre_archivo','$fecha',$numero[0]);";
+                                              $sql=("REPLACE into postulaciones
+                                                (practica,
+                                                nombre,
+                                                apellidos,
+                                                rut,
+                                                region,
+                                                comuna,
+                                                direccion,
+                                                telefono,
+                                                telefono2,
+                                                email,
+                                                universidad,
+                                                añoegreso,
+                                                educacion_superior,
+                                                titulos,
+                                                cursos,
+                                                areainteres,
+                                                areaesp,
+                                                link,
+                                                fecha,
+                                                numero) values
+                                              ('$practica',
+                                                '$name',
+                                                '$apellidos',
+                                                '$rut',
+                                                '$region',
+                                                '$comuna',
+                                                '$direccion',
+                                                '$telefonocomp',
+                                                '$telefonocomp2',
+                                                '$email',
+                                                '$universidad',
+                                                '$añoegreso',
+                                                '$media',
+                                                '$titulos',
+                                                '$cursos',
+                                                '$areainteres',
+                                                '$areaesp',
+                                                '$nombre_archivo',
+                                                '$fecha',
+                                                $numero[0])");
 
 
+
+try{
                                               $result=mysqli_query($conn,$sql);
 
-                                            if (mysqli_affected_rows($conn)){
+                                          }catch(Exception $e){
+         print_R($e);
+         die();
+     }
+
+                                            if (mysqli_affected_rows($conn)>0){
                                                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                                                  $return = array('error' => 0, 'message' => 'OK');
+                                                   $return = array('error' => 0, 'message' => "OK");
+                                                  include("test.php");
+                                                  die(json_encode($return));
+
+
 
 
                                       }
-                                        else   $return = array('error' => 1, 'message' => $target_file);
+
+                                        else     $return = array('error' => 3, 'message' => 'Archivo muy Grande');
+                                        die(json_encode($return));
+
 
 
 
                     }
 
-                    else $return = array('error' => 321, 'message' => "No se registró");
+                    else $return = array('error' => 321, 'message' => mysqli_error($conn).$sql);
 
                     }
 
 
 
 
-          /*  if(mail($to,$subject,$body,$from)){
-              $return = array('error' => 6, 'message' => 'Mail Enviado');
-              die(json_encode($return));
-
-
-
-} else{
-
-  $return = array('error' => 7, 'message' => 'Mail NO enviado');
-  die(json_encode($return));
-}
-*/
         die(json_encode($return));
 
 
@@ -222,7 +304,14 @@ function process_si_contact_form()
 
 
 
+
+
         }//POST
+
+      }catch(Exception $e){
+               print_R($e);
+               die();
+           }
       } // function process_si_contact_form()
 
 

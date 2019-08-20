@@ -55,6 +55,7 @@
   background-color: #d0181e !important;
 }
 
+
 .materialize-red-text.text-darken-1 {
   color: #d0181e !important;
 }
@@ -9418,3 +9419,10 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   main {
     flex: 1 0 auto;
   }
+
+#captcha_code{
+  font-size: 3rem;
+  color:white;
+  border-bottom: 3px solid white;
+
+}
